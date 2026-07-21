@@ -1,6 +1,9 @@
 import pagerImg from "@/assets/project-pager.jpg";
+import pagerDetailImg from "@/assets/project-pager-detail.jpg";
 import fpgaImg from "@/assets/project-fpga.jpg";
+import fpgaDetailImg from "@/assets/project-fpga-detail.jpg";
 import musicImg from "@/assets/project-music.jpg";
+import musicDetailImg from "@/assets/project-music-detail.jpg";
 
 export type Project = {
   slug: string;
@@ -13,6 +16,7 @@ export type Project = {
   body: string[];
   image: string;
   imageAlt: string;
+  images: { src: string; alt: string }[];
 };
 
 export const projects: Project[] = [
@@ -30,6 +34,10 @@ export const projects: Project[] = [
     ],
     image: pagerImg,
     imageAlt: "Custom Bluetooth pager PCB on light blue linen.",
+    images: [
+      { src: pagerImg, alt: "Custom Bluetooth pager PCB on light blue linen." },
+      { src: pagerDetailImg, alt: "Close-up of the pager's e-ink display and nRF52 module." },
+    ],
   },
   {
     slug: "fpga-playground",
@@ -45,6 +53,10 @@ export const projects: Project[] = [
     ],
     image: fpgaImg,
     imageAlt: "FPGA development board glowing with blue LEDs.",
+    images: [
+      { src: fpgaImg, alt: "FPGA development board glowing with blue LEDs." },
+      { src: fpgaDetailImg, alt: "FPGA board with a waveform display and Verilog code in the background." },
+    ],
   },
   {
     slug: "music-player",
@@ -60,6 +72,10 @@ export const projects: Project[] = [
     ],
     image: musicImg,
     imageAlt: "Handheld music player with a round dial on pale blue paper.",
+    images: [
+      { src: musicImg, alt: "Handheld music player with a round dial on pale blue paper." },
+      { src: musicDetailImg, alt: "Exploded view of the music player showing the internal electronics." },
+    ],
   },
 ];
 
