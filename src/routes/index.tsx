@@ -154,9 +154,9 @@ function Home() {
         </div>
       </section>
 
-      <main className="mx-auto max-w-4xl px-6">
+      <main className="mx-auto max-w-6xl px-6">
         <section className="pt-4 pb-16">
-          <div className="mx-auto max-w-2xl space-y-5 text-lg leading-relaxed text-foreground/85">
+          <div className="mx-auto max-w-3xl space-y-5 text-lg leading-relaxed text-foreground/85">
             <p>
               Third-year electrical engineering major with an economics minor at
               UC Davis. I like small, quiet electronics — PCBs you can hold in

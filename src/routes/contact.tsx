@@ -22,7 +22,7 @@ export const Route = createFileRoute("/contact")({
 function Contact() {
   return (
     <SiteLayout>
-      <main className="mx-auto max-w-3xl px-6">
+      <main className="mx-auto max-w-4xl px-6">
         <section className="pt-20 pb-16">
           <p className="mb-6 flex items-center gap-3 text-xs uppercase tracking-[0.28em] text-muted-foreground">
             <span className="h-px w-8 bg-accent" />

@@ -40,7 +40,7 @@ function ProjectDetail() {
 
   return (
     <SiteLayout>
-      <main className="mx-auto max-w-3xl px-6">
+      <main className="mx-auto max-w-5xl px-6">
         <div className="pt-10">
           <Link
             to="/projects"
