@@ -37,8 +37,8 @@ export const projects: Project[] = [
     imageAlt: "Custom Bluetooth pager PCB on light blue linen.",
     images: [
       { src: pagerImg, alt: "Custom Bluetooth pager PCB on light blue linen." },
-      { src: pagerDetailImg, alt: "Close-up of the pager's e-ink display and nRF52 module." },
     ],
+
   },
   {
     slug: "fpga-playground",
