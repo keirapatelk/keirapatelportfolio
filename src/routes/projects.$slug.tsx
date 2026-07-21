@@ -62,12 +62,22 @@ function ProjectDetail() {
           <p className="mt-4 text-lg text-muted-foreground">{p.kicker}</p>
         </section>
 
-        <div className="overflow-hidden rounded-2xl border border-border bg-surface">
-          <img
-            src={p.image}
-            alt={p.imageAlt}
-            className="h-auto w-full object-cover"
-          />
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {p.images.map((img, i) => (
+            <div
+              key={i}
+              className="aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-surface"
+            >
+              <img
+                src={img.src}
+                alt={img.alt}
+                loading="lazy"
+                width={1024}
+                height={768}
+                className="h-full w-full object-cover"
+              />
+            </div>
+          ))}
         </div>
 
         <section className="grid gap-8 py-12 sm:grid-cols-[10rem_1fr]">
