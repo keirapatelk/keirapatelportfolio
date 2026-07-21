@@ -99,20 +99,6 @@ function Home() {
           </div>
         </div>
 
-        {/* Full-width bottom specs bar */}
-        <div className="absolute bottom-0 inset-x-0 border-t border-border/40 bg-background/40 px-4 py-3 backdrop-blur-sm sm:px-6">
-          <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-4 sm:gap-8">
-            <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-              <span className="text-accent">01</span> UC_DAVIS
-            </span>
-            <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-              <span className="text-accent">02</span> ELECTRICAL_ENG
-            </span>
-            <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-              <span className="text-accent">03</span> DAVIS_CA
-            </span>
-          </div>
-        </div>
       </section>
 
       <main className="mx-auto max-w-6xl px-6">
