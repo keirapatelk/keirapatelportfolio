@@ -62,11 +62,19 @@ function ProjectDetail() {
           <p className="mt-4 text-lg text-muted-foreground">{p.kicker}</p>
         </section>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div
+          className={
+            p.images.length === 1
+              ? "grid grid-cols-1 gap-4"
+              : "grid grid-cols-1 gap-4 sm:grid-cols-2"
+          }
+        >
           {p.images.map((img, i) => (
             <div
               key={i}
-              className="aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-surface"
+              className={`overflow-hidden rounded-2xl border border-border bg-surface ${
+                p.images.length === 1 ? "aspect-[11/4]" : "aspect-[4/3]"
+              }`}
             >
               <img
                 src={img.src}
@@ -79,6 +87,7 @@ function ProjectDetail() {
             </div>
           ))}
         </div>
+
 
         <section className="grid gap-8 py-12 sm:grid-cols-[10rem_1fr]">
           <dl className="space-y-4 text-sm">
