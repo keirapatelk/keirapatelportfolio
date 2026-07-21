@@ -47,7 +47,6 @@ function Home() {
           }}
         />
 
-
         {/* Corner brackets */}
         <div className="absolute top-16 left-4 h-10 w-10 border-t border-l border-accent/30 sm:left-6" />
         <div className="absolute top-16 right-4 h-10 w-10 border-t border-r border-accent/30 sm:right-6" />
@@ -95,7 +94,6 @@ function Home() {
           <h1 className="mt-3 max-w-3xl font-display text-5xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-6xl lg:text-7xl">
             I'm Keira Patel.
           </h1>
-
         </div>
 
         {/* Full-width bottom specs bar */}
@@ -112,7 +110,6 @@ function Home() {
             </span>
           </div>
         </div>
-
       </section>
 
       <main className="mx-auto max-w-6xl px-6">
