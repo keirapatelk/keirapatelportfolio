@@ -54,8 +54,8 @@ function Home() {
         <div className="absolute bottom-20 right-4 h-10 w-10 border-b border-r border-accent/30 sm:right-6" />
 
         <div className="relative mx-auto flex h-full w-full max-w-6xl flex-col items-start justify-center px-6 pb-20 pt-24 lg:flex-row lg:items-center lg:justify-between">
-          {/* Tech-framed portrait — offset to the left */}
-          <div className="relative lg:ml-8">
+          {/* Tech-framed portrait — offset toward center */}
+          <div className="relative lg:ml-16">
             <div className="relative h-36 w-36 overflow-hidden rounded-2xl border-2 border-background bg-surface shadow-2xl sm:h-44 sm:w-44">
               <img
                 src={portraitPlaceholder}
@@ -93,7 +93,7 @@ function Home() {
             <h1 className="font-display text-5xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-6xl lg:text-7xl">
               Keira Patel
             </h1>
-            <p className="mt-3 ml-8 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground lg:ml-0 lg:mr-10">
+            <p className="mt-3 ml-8 font-mono text-sm uppercase tracking-[0.15em] text-muted-foreground lg:ml-0 lg:mr-10">
               Project Portfolio
             </p>
           </div>
