@@ -27,7 +27,7 @@ function Home() {
   return (
     <SiteLayout>
       {/* Full-bleed hero */}
-      <section className="relative -mt-[104px] h-[85vh] min-h-[560px] w-full overflow-hidden">
+      <section className="relative mt-8 h-[80vh] min-h-[520px] w-full overflow-hidden">
         <img
           src={heroCover}
           alt="Calm ocean at dawn"
