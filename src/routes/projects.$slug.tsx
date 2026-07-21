@@ -40,7 +40,7 @@ function ProjectDetail() {
 
   return (
     <SiteLayout>
-      <main className="mx-auto max-w-3xl px-6">
+      <main className="mx-auto max-w-5xl px-6">
         <div className="pt-10">
           <Link
             to="/projects"
@@ -121,7 +121,7 @@ function ProjectDetail() {
 function ProjectNotFound() {
   return (
     <SiteLayout>
-      <main className="mx-auto max-w-3xl px-6 py-24 text-center">
+      <main className="mx-auto max-w-5xl px-6 py-24 text-center">
         <h1 className="font-display text-4xl font-semibold tracking-tight">
           Project not found
         </h1>
