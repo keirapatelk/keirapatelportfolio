@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { projects } from "@/lib/projects";
+import heroCover from "@/assets/hero-cover.jpg";
+import portraitPlaceholder from "@/assets/portrait-placeholder.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,17 +26,39 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <SiteLayout>
-      <main className="mx-auto max-w-4xl px-6">
-        {/* Hero / about */}
-        <section className="pt-20 pb-16">
-          <p className="mb-6 flex items-center gap-3 text-xs uppercase tracking-[0.28em] text-muted-foreground">
-            <span className="h-px w-8 bg-accent" />
+      {/* Full-bleed hero */}
+      <section className="relative mt-8 h-[80vh] min-h-[520px] w-full overflow-hidden">
+        <img
+          src={heroCover}
+          alt="Calm ocean at dawn"
+          width={1920}
+          height={1200}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/10 to-background" />
+
+        <div className="relative mx-auto flex h-full max-w-4xl flex-col items-center justify-end px-6 pb-16 text-center">
+          <div className="relative h-40 w-40 overflow-hidden rounded-full border-4 border-background bg-surface shadow-xl sm:h-48 sm:w-48">
+            <img
+              src={portraitPlaceholder}
+              alt="Portrait of Keira Patel"
+              width={800}
+              height={800}
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <p className="mt-6 text-xs uppercase tracking-[0.28em] text-muted-foreground">
             Hello
           </p>
-          <h1 className="font-display text-5xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-6xl">
+          <h1 className="mt-3 font-display text-5xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-6xl">
             I'm Keira Patel.
           </h1>
-          <div className="mt-8 max-w-2xl space-y-5 text-lg leading-relaxed text-foreground/85">
+        </div>
+      </section>
+
+      <main className="mx-auto max-w-4xl px-6">
+        <section className="pt-4 pb-16">
+          <div className="mx-auto max-w-2xl space-y-5 text-lg leading-relaxed text-foreground/85">
             <p>
               Third-year electrical engineering major with an economics minor at
               UC Davis. I like small, quiet electronics — PCBs you can hold in
