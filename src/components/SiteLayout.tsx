@@ -39,7 +39,7 @@ export function SiteLayout({ children }: { children?: ReactNode }) {
       <footer className="mt-24 border-t border-border bg-surface">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Keira Patel</p>
-          <p>Davis, CA · keira@example.com</p>
+          <p>Davis, CA · keipatel@ucdavis.edu</p>
         </div>
       </footer>
     </div>
