@@ -93,7 +93,7 @@ function Home() {
             <h1 className="font-display text-5xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-6xl lg:text-7xl">
               Keira Patel
             </h1>
-            <p className="mt-3 ml-8 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground lg:ml-0 lg:mr-10">
+            <p className="mt-3 ml-8 font-mono text-sm uppercase tracking-[0.15em] text-muted-foreground lg:ml-0 lg:mr-10">
               Project Portfolio
             </p>
           </div>
