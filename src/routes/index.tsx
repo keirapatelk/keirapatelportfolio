@@ -117,6 +117,9 @@ function Home() {
 
       <main className="mx-auto max-w-6xl px-6">
         <section className="pt-4 pb-16">
+          <h2 className="mb-6 font-display text-2xl font-semibold tracking-tight">
+            About Me
+          </h2>
           <div className="space-y-5 text-lg leading-relaxed text-foreground/85">
             <p>
               Third-year electrical engineering major with an economics minor at
