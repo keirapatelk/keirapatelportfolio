@@ -47,19 +47,6 @@ function Home() {
           }}
         />
 
-        {/* Full-width top status bar */}
-        <div className="absolute top-0 inset-x-0 flex items-center justify-between border-b border-border/40 bg-background/30 px-4 py-3 backdrop-blur-sm sm:px-6">
-          <div className="flex items-center gap-4">
-            <div className="h-px w-8 bg-accent sm:w-12" />
-            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
-              SYS_STATUS: ACTIVE
-            </span>
-          </div>
-          <span className="hidden font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground sm:inline">
-            COORD: 38.5382°N, 121.7617°W
-          </span>
-        </div>
-
         {/* Corner brackets */}
         <div className="absolute top-16 left-4 h-10 w-10 border-t border-l border-accent/30 sm:left-6" />
         <div className="absolute top-16 right-4 h-10 w-10 border-t border-r border-accent/30 sm:right-6" />
@@ -107,56 +94,27 @@ function Home() {
           <h1 className="mt-3 max-w-3xl font-display text-5xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-6xl lg:text-7xl">
             I'm Keira Patel.
           </h1>
-
-          {/* Technical spec tags */}
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            {[
-              "FPGA / HDL",
-              "PCB Design",
-              "Signal Integrity",
-            ].map((tag) => (
-              <div
-                key={tag}
-                className="flex items-center gap-2 border border-border bg-background/70 px-3 py-1.5 backdrop-blur-sm"
-              >
-                <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                <span className="font-mono text-[10px] uppercase tracking-wider text-foreground">
-                  {tag}
-                </span>
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* Full-width bottom specs bar */}
         <div className="absolute bottom-0 inset-x-0 border-t border-border/40 bg-background/40 px-4 py-3 backdrop-blur-sm sm:px-6">
-          <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2">
-            <div className="flex flex-wrap gap-4 sm:gap-8">
-              <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-                <span className="text-accent">01</span> UC_DAVIS
-              </span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-                <span className="text-accent">02</span> ELECTRICAL_ENG
-              </span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-                <span className="text-accent">03</span> DAVIS_CA
-              </span>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="h-1 w-20 overflow-hidden rounded-full bg-border sm:w-28">
-                <div className="h-full w-2/3 bg-accent" />
-              </div>
-              <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-                67% LOAD
-              </span>
-            </div>
+          <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-4 sm:gap-8">
+            <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+              <span className="text-accent">01</span> UC_DAVIS
+            </span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+              <span className="text-accent">02</span> ELECTRICAL_ENG
+            </span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+              <span className="text-accent">03</span> DAVIS_CA
+            </span>
           </div>
         </div>
       </section>
 
       <main className="mx-auto max-w-6xl px-6">
         <section className="pt-4 pb-16">
-          <div className="mx-auto max-w-3xl space-y-5 text-lg leading-relaxed text-foreground/85">
+          <div className="space-y-5 text-lg leading-relaxed text-foreground/85">
             <p>
               Third-year electrical engineering major with an economics minor at
               UC Davis. I like small, quiet electronics — PCBs you can hold in
