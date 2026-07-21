@@ -1,9 +1,10 @@
-import pagerImg from "@/assets/project-pager.jpg";
+import pagerImg from "@/assets/bluetoothPagerPhoto.jpg";
 import pagerDetailImg from "@/assets/project-pager-detail.jpg";
 import fpgaImg from "@/assets/project-fpga.jpg";
 import fpgaDetailImg from "@/assets/project-fpga-detail.jpg";
 import musicImg from "@/assets/project-music.jpg";
 import musicDetailImg from "@/assets/project-music-detail.jpg";
+
 
 export type Project = {
   slug: string;
