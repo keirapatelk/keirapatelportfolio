@@ -26,8 +26,8 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <SiteLayout>
-      {/* Full-bleed hero */}
-      <section className="relative mt-8 h-[80vh] min-h-[520px] w-full overflow-hidden">
+      {/* Full-bleed technical hero */}
+      <section className="relative mt-8 h-[80vh] min-h-[560px] w-full overflow-hidden">
         <img
           src={heroCover}
           alt="Calm ocean at dawn"
@@ -35,24 +35,122 @@ function Home() {
           height={1200}
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/10 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/45 via-background/15 to-background" />
 
-        <div className="relative mx-auto flex h-full max-w-4xl flex-col items-center justify-end px-6 pb-16 text-center">
-          <div className="relative h-40 w-40 overflow-hidden rounded-full border-4 border-background bg-surface shadow-xl sm:h-48 sm:w-48">
-            <img
-              src={portraitPlaceholder}
-              alt="Portrait of Keira Patel"
-              width={800}
-              height={800}
-              className="h-full w-full object-cover"
-            />
+        {/* Full-width technical grid overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.08]"
+          style={{
+            backgroundImage:
+              "linear-gradient(var(--color-foreground) 1px, transparent 1px), linear-gradient(90deg, var(--color-foreground) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+          }}
+        />
+
+        {/* Full-width top status bar */}
+        <div className="absolute top-0 inset-x-0 flex items-center justify-between border-b border-border/40 bg-background/30 px-4 py-3 backdrop-blur-sm sm:px-6">
+          <div className="flex items-center gap-4">
+            <div className="h-px w-8 bg-accent sm:w-12" />
+            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+              SYS_STATUS: ACTIVE
+            </span>
           </div>
-          <p className="mt-6 text-xs uppercase tracking-[0.28em] text-muted-foreground">
+          <span className="hidden font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground sm:inline">
+            COORD: 38.5382°N, 121.7617°W
+          </span>
+        </div>
+
+        {/* Corner brackets */}
+        <div className="absolute top-16 left-4 h-10 w-10 border-t border-l border-accent/30 sm:left-6" />
+        <div className="absolute top-16 right-4 h-10 w-10 border-t border-r border-accent/30 sm:right-6" />
+        <div className="absolute bottom-20 left-4 h-10 w-10 border-b border-l border-accent/30 sm:left-6" />
+        <div className="absolute bottom-20 right-4 h-10 w-10 border-b border-r border-accent/30 sm:right-6" />
+
+        <div className="relative mx-auto flex h-full max-w-6xl flex-col items-center justify-center px-6 pb-20 pt-24 text-center">
+          {/* Tech-framed portrait */}
+          <div className="relative">
+            <div className="relative h-36 w-36 overflow-hidden rounded-2xl border-2 border-background bg-surface shadow-2xl sm:h-44 sm:w-44">
+              <img
+                src={portraitPlaceholder}
+                alt="Portrait of Keira Patel"
+                width={800}
+                height={800}
+                className="h-full w-full object-cover"
+              />
+            </div>
+
+            {/* Corner bracket accents */}
+            <div className="absolute -inset-3 rounded-2xl border border-accent/30" />
+            <div className="absolute -top-1 -left-1 h-4 w-4 border-t-2 border-l-2 border-accent" />
+            <div className="absolute -top-1 -right-1 h-4 w-4 border-t-2 border-r-2 border-accent" />
+            <div className="absolute -bottom-1 -left-1 h-4 w-4 border-b-2 border-l-2 border-accent" />
+            <div className="absolute -bottom-1 -right-1 h-4 w-4 border-b-2 border-r-2 border-accent" />
+
+            {/* Reticle crosshairs */}
+            <div className="absolute top-1/2 -left-6 h-px w-4 bg-accent/50 sm:-left-8 sm:w-6" />
+            <div className="absolute top-1/2 -right-6 h-px w-4 bg-accent/50 sm:-right-8 sm:w-6" />
+            <div className="absolute left-1/2 -top-6 h-4 w-px bg-accent/50 sm:-top-8 sm:h-6" />
+            <div className="absolute left-1/2 -bottom-6 h-4 w-px bg-accent/50 sm:-bottom-8 sm:h-6" />
+
+            {/* Floating labels */}
+            <span className="absolute -right-20 top-2 hidden font-mono text-[9px] uppercase tracking-wider text-muted-foreground lg:block">
+              UC_DAVIS_EE
+            </span>
+            <span className="absolute -left-24 bottom-2 hidden font-mono text-[9px] uppercase tracking-wider text-muted-foreground lg:block">
+              CORE_LVL_03
+            </span>
+          </div>
+
+          <p className="mt-8 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
             Hello
           </p>
-          <h1 className="mt-3 font-display text-5xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-6xl">
+          <h1 className="mt-3 max-w-3xl font-display text-5xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-6xl lg:text-7xl">
             I'm Keira Patel.
           </h1>
+
+          {/* Technical spec tags */}
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            {[
+              "FPGA / HDL",
+              "PCB Design",
+              "Signal Integrity",
+            ].map((tag) => (
+              <div
+                key={tag}
+                className="flex items-center gap-2 border border-border bg-background/70 px-3 py-1.5 backdrop-blur-sm"
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                <span className="font-mono text-[10px] uppercase tracking-wider text-foreground">
+                  {tag}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Full-width bottom specs bar */}
+        <div className="absolute bottom-0 inset-x-0 border-t border-border/40 bg-background/40 px-4 py-3 backdrop-blur-sm sm:px-6">
+          <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2">
+            <div className="flex flex-wrap gap-4 sm:gap-8">
+              <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+                <span className="text-accent">01</span> UC_DAVIS
+              </span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+                <span className="text-accent">02</span> ELECTRICAL_ENG
+              </span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+                <span className="text-accent">03</span> DAVIS_CA
+              </span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="h-1 w-20 overflow-hidden rounded-full bg-border sm:w-28">
+                <div className="h-full w-2/3 bg-accent" />
+              </div>
+              <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                67% LOAD
+              </span>
+            </div>
+          </div>
         </div>
       </section>
 
