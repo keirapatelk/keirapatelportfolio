@@ -53,9 +53,9 @@ function Home() {
         <div className="absolute bottom-20 left-4 h-10 w-10 border-b border-l border-accent/30 sm:left-6" />
         <div className="absolute bottom-20 right-4 h-10 w-10 border-b border-r border-accent/30 sm:right-6" />
 
-        <div className="relative mx-auto flex h-full max-w-6xl flex-col items-center justify-center px-6 pb-20 pt-24 text-center">
-          {/* Tech-framed portrait */}
-          <div className="relative">
+        <div className="relative mx-auto flex h-full w-full max-w-6xl flex-col items-start justify-center px-6 pb-20 pt-24 lg:flex-row lg:items-center lg:justify-between">
+          {/* Tech-framed portrait — offset to the left */}
+          <div className="relative lg:ml-8">
             <div className="relative h-36 w-36 overflow-hidden rounded-2xl border-2 border-background bg-surface shadow-2xl sm:h-44 sm:w-44">
               <img
                 src={portraitPlaceholder}
@@ -88,12 +88,15 @@ function Home() {
             </span>
           </div>
 
-          <p className="mt-8 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            Hello
-          </p>
-          <h1 className="mt-3 max-w-3xl font-display text-5xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-6xl lg:text-7xl">
-            I'm Keira Patel.
-          </h1>
+          {/* Title — staggered lines */}
+          <div className="mt-10 flex flex-col items-start lg:mt-0 lg:items-end lg:text-right">
+            <h1 className="font-display text-5xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-6xl lg:text-7xl">
+              Keira Patel
+            </h1>
+            <p className="mt-3 ml-8 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground lg:ml-0 lg:mr-10">
+              Project Portfolio
+            </p>
+          </div>
         </div>
 
         {/* Full-width bottom specs bar */}
