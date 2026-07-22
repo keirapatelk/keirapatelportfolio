@@ -162,7 +162,13 @@ function ProjectDetail() {
           </div>
         </section>
 
-        <section className="border-t border-border py-10">
+        <section className="relative border-t border-border py-10">
+          <img
+            src={circuitBranch.url}
+            alt=""
+            aria-hidden
+            className="pointer-events-none absolute right-2 bottom-4 hidden h-24 w-auto -scale-x-100 opacity-20 sm:block"
+          />
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
             Next project
           </p>
