@@ -130,26 +130,16 @@ function ProjectDetail() {
                       key={i}
                       className="grid grid-cols-1 gap-4 rounded-xl border border-border bg-card p-5 sm:grid-cols-[1fr_auto_1fr] sm:items-start sm:gap-6"
                     >
-                      <div>
-                        <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
-                          Challenge
-                        </p>
-                        <p className="mt-2 text-sm leading-relaxed text-foreground/85">
-                          {cs.challenge}
-                        </p>
-                      </div>
+                      <p className="text-sm leading-relaxed text-foreground/85">
+                        {cs.challenge}
+                      </p>
                       <div className="flex items-center justify-center sm:h-full">
                         <span className="hidden text-lg text-accent sm:inline-block">→</span>
                         <span className="text-lg text-accent sm:hidden">↓</span>
                       </div>
-                      <div>
-                        <p className="text-xs font-medium uppercase tracking-[0.16em] text-accent">
-                          Solution
-                        </p>
-                        <p className="mt-2 text-sm leading-relaxed text-foreground/90">
-                          {cs.solution}
-                        </p>
-                      </div>
+                      <p className="text-sm leading-relaxed text-foreground/90">
+                        {cs.solution}
+                      </p>
                     </div>
                   ))}
                 </div>
