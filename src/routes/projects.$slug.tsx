@@ -177,6 +177,27 @@ function ProjectDetail() {
   );
 }
 
+function SectionLabel({
+  children,
+  tone = "default",
+}: {
+  children: React.ReactNode;
+  tone?: "default" | "accent";
+}) {
+  return (
+    <h2
+      className={`font-display text-xl font-semibold tracking-tight sm:text-2xl ${
+        tone === "accent" ? "text-accent" : "text-foreground"
+      }`}
+    >
+      <span className="mr-2 font-mono text-xs align-middle text-muted-foreground">
+        //
+      </span>
+      {children}
+    </h2>
+  );
+}
+
 function ProjectNotFound() {
   return (
     <SiteLayout>
