@@ -1,9 +1,22 @@
 import pagerImg from "@/assets/bluetoothPagerPhoto.jpg";
-import pagerDetailImg from "@/assets/project-pager-detail.jpg";
-import fpgaImg from "@/assets/project-fpga.jpg";
-import fpgaDetailImg from "@/assets/project-fpga-detail.jpg";
-import musicImg from "@/assets/project-music.jpg";
-import musicDetailImg from "@/assets/project-music-detail.jpg";
+import fpgaImg from "@/assets/fpgaDiceGame.png";
+import fpgaDetailImg from "@/assets/fpgaQuartus.png";
+import musicImg from "@/assets/project-music-player.jpg";
+import musicDetailImg from "@/assets/project-music-player-detail.jpg";
+import mammotenImg from "@/assets/project-mammoten.jpg";
+import mammotenDetailImg from "@/assets/project-mammoten-detail.jpg";
+import waterPoloImg from "@/assets/project-water-polo.jpg";
+import waterPoloDetailImg from "@/assets/project-water-polo-detail.jpg";
+import smogImg from "@/assets/project-smog.jpg";
+import smogDetailImg from "@/assets/project-smog-detail.jpg";
+import pigGameImg from "@/assets/project-pig-game.jpg";
+import pigGameDetailImg from "@/assets/project-pig-game-detail.jpg";
+import wheelchairImg from "@/assets/project-wheelchair-restraint.jpg";
+import wheelchairDetailImg from "@/assets/project-wheelchair-restraint-detail.jpg";
+import watchImg from "@/assets/project-watch-adapter.jpg";
+import watchDetailImg from "@/assets/project-watch-adapter-detail.jpg";
+import pingPongImg from "@/assets/project-ping-pong.jpg";
+import pingPongDetailImg from "@/assets/project-ping-pong-detail.jpg";
 
 
 export type Project = {
@@ -91,11 +104,11 @@ export const projects: Project[] = [
       "Built the Mammoten site in a single vibecoded sprint — going from a rough moodboard to a shipped marketing page in an afternoon.",
       "The goal was to lean into intuition over process: pick fonts that felt right, let the copy breathe, and ship before second-guessing it.",
     ],
-    image: musicImg,
+    image: mammotenImg,
     imageAlt: "Mammoten website preview.",
     images: [
-      { src: musicImg, alt: "Mammoten website preview." },
-      { src: musicDetailImg, alt: "Mammoten website detail view." },
+      { src: mammotenImg, alt: "Mammoten website preview." },
+      { src: mammotenDetailImg, alt: "Mammoten website detail view." },
     ],
   },
   {
@@ -110,11 +123,11 @@ export const projects: Project[] = [
       "Worked with the Aggie Sports Analytics club to build a live water polo stat tracker — logging shots, saves, exclusions, and possession in real time.",
       "The bigger challenge was turning raw event logs into something coaches could actually read on the pool deck between quarters.",
     ],
-    image: musicImg,
+    image: waterPoloImg,
     imageAlt: "Water polo analytics dashboard.",
     images: [
-      { src: musicImg, alt: "Water polo analytics dashboard." },
-      { src: musicDetailImg, alt: "Stat tracking interface detail." },
+      { src: waterPoloImg, alt: "Water polo analytics dashboard." },
+      { src: waterPoloDetailImg, alt: "Stat tracking interface detail." },
     ],
   },
   {
@@ -129,11 +142,11 @@ export const projects: Project[] = [
       "Spent a summer at Jamboree Smog learning the ins and outs of vehicle emissions testing — OBD-II diagnostics, tailpipe measurements, and the paperwork behind a clean cert.",
       "It was the first time I connected classroom electronics to the greasy, real-world version of the same problem.",
     ],
-    image: pagerImg,
+    image: smogImg,
     imageAlt: "Smog testing equipment.",
     images: [
-      { src: pagerImg, alt: "Smog testing equipment." },
-      { src: pagerDetailImg, alt: "Diagnostic tool close-up." },
+      { src: smogImg, alt: "Smog testing equipment." },
+      { src: smogDetailImg, alt: "Diagnostic tool close-up." },
     ],
   },
   {
@@ -148,11 +161,11 @@ export const projects: Project[] = [
       "Built the classic PIG dice game as a small programming exercise — roll to build a turn score, but a 1 wipes it out.",
       "Added a lightweight strategy opponent that decides when to bank based on the current score gap, which turned out to be a fun little decision-theory rabbit hole.",
     ],
-    image: pagerImg,
+    image: pigGameImg,
     imageAlt: "PIG dice game screenshot.",
     images: [
-      { src: pagerImg, alt: "PIG dice game screenshot." },
-      { src: pagerDetailImg, alt: "Game logic detail." },
+      { src: pigGameImg, alt: "PIG dice game screenshot." },
+      { src: pigGameDetailImg, alt: "Game logic detail." },
     ],
   },
   {
@@ -167,11 +180,11 @@ export const projects: Project[] = [
       "Designed a wheelchair restraint prototype aimed at cutting the time it takes to secure a chair in a vehicle without sacrificing safety.",
       "The design went through several iterations informed by user interviews — the final version prioritized one-handed operation and clear tactile feedback when locked.",
     ],
-    image: musicImg,
+    image: wheelchairImg,
     imageAlt: "Wheelchair restraint prototype.",
     images: [
-      { src: musicImg, alt: "Wheelchair restraint prototype." },
-      { src: musicDetailImg, alt: "Restraint mechanism detail." },
+      { src: wheelchairImg, alt: "Wheelchair restraint prototype." },
+      { src: wheelchairDetailImg, alt: "Restraint mechanism detail." },
     ],
   },
   {
@@ -186,11 +199,11 @@ export const projects: Project[] = [
       "Modeled and printed a small adapter to fit a band I liked onto a watch case it wasn't made for. Most of the work was in the tolerances — the spring bar pockets had to be right within a tenth of a millimeter.",
       "It's the kind of project that takes an evening and quietly makes something you use every day better.",
     ],
-    image: pagerImg,
+    image: watchImg,
     imageAlt: "3D printed watch adapter.",
     images: [
-      { src: pagerImg, alt: "3D printed watch adapter." },
-      { src: pagerDetailImg, alt: "Adapter fit detail." },
+      { src: watchImg, alt: "3D printed watch adapter." },
+      { src: watchDetailImg, alt: "Adapter fit detail." },
     ],
   },
   {
@@ -205,11 +218,11 @@ export const projects: Project[] = [
       "Wrote a Pong clone in C for a microcontroller, driving a small OLED and reading two physical buttons per player.",
       "The interesting part was keeping the frame timing steady while polling inputs — a good excuse to learn about hardware timers and interrupt priorities.",
     ],
-    image: musicImg,
+    image: pingPongImg,
     imageAlt: "Microcontroller Pong game.",
     images: [
-      { src: musicImg, alt: "Microcontroller Pong game." },
-      { src: musicDetailImg, alt: "OLED display detail." },
+      { src: pingPongImg, alt: "Microcontroller Pong game." },
+      { src: pingPongDetailImg, alt: "OLED display detail." },
     ],
   },
 ];
