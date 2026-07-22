@@ -96,8 +96,8 @@ function ProjectDetail() {
         </div>
 
 
-        <section className="border-y border-border py-8">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-[auto_auto_1fr]">
+        <section className="grid grid-cols-1 gap-8 border-y border-border py-12 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-8 content-start">
             <div>
               <dt className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
                 Role
@@ -106,7 +106,7 @@ function ProjectDetail() {
             </div>
             <div>
               <dt className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                Stack
+                Tech Stack
               </dt>
               <dd className="mt-1 flex flex-wrap gap-1.5">
                 {p.stack.map((s) => (
@@ -129,10 +129,18 @@ function ProjectDetail() {
                 </dd>
               </div>
             )}
+            {p.sections.results && (
+              <div>
+                <dt className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                  Results
+                </dt>
+                <dd className="mt-1 text-sm leading-relaxed text-foreground/85">
+                  {p.sections.results}
+                </dd>
+              </div>
+            )}
           </div>
-        </section>
 
-        <section className="grid grid-cols-1 gap-8 py-12 md:grid-cols-2">
           {p.sections.pairs && p.sections.pairs.length > 0 && (
             <div>
               <SectionLabel>Challenges & Solutions</SectionLabel>
@@ -155,15 +163,6 @@ function ProjectDetail() {
                   </div>
                 ))}
               </div>
-            </div>
-          )}
-
-          {p.sections.results && (
-            <div>
-              <SectionLabel>Results</SectionLabel>
-              <p className="mt-3 text-sm leading-relaxed text-foreground/85">
-                {p.sections.results}
-              </p>
             </div>
           )}
         </section>
