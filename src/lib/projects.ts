@@ -17,8 +17,8 @@ import watchImg from "@/assets/project-watch-adapter.jpg";
 import watchDetailImg from "@/assets/project-watch-adapter-detail.jpg";
 import pingPongImg from "@/assets/pingPongTIMSP.png";
 import pingPongDetailImg from "@/assets/project-ping-pong-detail.jpg";
-import ieeeWebsiteImg from "@/assets/project-ieee-website.jpg";
-import ieeeWebsiteDetailImg from "@/assets/project-ieee-website-detail.jpg";
+import ieeeWebsiteImg from "@/assets/ieeeWebsite.png";
+import ieeeWebsiteDetailImg from "@/assets/ieeeWebsiteDetail.png";
 
 
 export type Project = {
@@ -39,14 +39,22 @@ export const projects: Project[] = [
   {
     slug: "bluetooth-pager",
     title: "PCB Bluetooth Pager",
-    kicker: "A pocket-sized message device, schematic to solder.",
+    kicker: "Mid-range, multilevel household message system made with ESP32.",
     year: "2025",
     role: "Hardware & firmware",
     stack: ["ESP32", "SPI", "C++", "Altium Designer", "Arduino IDE"],
-    summary: "Custom two-layer PCB with an e-ink display and BLE messaging.",
+    summary: " ",
     body: [
-      "Designed a two-layer PCB around an nRF52 module with a low-power e-ink display and a haptic driver. Every part was hand-picked for a 30-day battery target.",
-      "Wrote the BLE service and a small companion app that lets a friend send a short message; the pager buzzes, then holds the note on-screen until you dismiss it.",
+      "Objective: Create a compact, low-power Bluetooth Low Energy (BLE) pager to send alerts" +
+      " across a household, with a focus on low latency and acknowlegement (ACK) of received messages.",
+      "Challenges: establishing a secure ACK mechanism," + " optimizing battery life," + 
+      " creating a custom PCB footprint for a unique battery module," + 
+      " establishing secure communication through walls and long distances" + 
+      " creating variable LCD brightness for different household environments",
+      "Solutions: Implemented a custom BLE service with acknowledgment features, optimized the ESP32" +
+      "sleep mode to reduce power draw, and designed a 2-layer PCB with a custom battery footprint.",
+      "Key Implementations: Wrote the BLE service and a small companion app that lets a friend send a short message; the pager buzzes, then holds the note on-screen until you dismiss it.",
+      "Results: ",
     ],
     image: pagerImg,
     imageAlt: "Custom Bluetooth pager PCB on light blue linen.",
