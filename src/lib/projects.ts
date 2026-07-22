@@ -1,21 +1,21 @@
 import pagerImg from "@/assets/bluetoothPagerPhoto.jpg";
 import fpgaImg from "@/assets/fpgaDiceGame.png";
 import fpgaDetailImg from "@/assets/fpgaQuartus.png";
-import musicImg from "@/assets/project-music-player.jpg";
+import musicImg from "@/assets/musicPlayer.jpg";
 import musicDetailImg from "@/assets/project-music-player-detail.jpg";
-import mammotenImg from "@/assets/project-mammoten.jpg";
+import mammotenImg from "@/assets/mammoTENWebsite.png";
 import mammotenDetailImg from "@/assets/project-mammoten-detail.jpg";
 import waterPoloImg from "@/assets/project-water-polo.jpg";
 import waterPoloDetailImg from "@/assets/project-water-polo-detail.jpg";
 import smogImg from "@/assets/project-smog.jpg";
 import smogDetailImg from "@/assets/project-smog-detail.jpg";
-import pigGameImg from "@/assets/project-pig-game.jpg";
+import pigGameImg from "@/assets/pigUI.png";
 import pigGameDetailImg from "@/assets/project-pig-game-detail.jpg";
-import wheelchairImg from "@/assets/project-wheelchair-restraint.jpg";
+import wheelchairImg from "@/assets/wheelchairPresentation.png";
 import wheelchairDetailImg from "@/assets/project-wheelchair-restraint-detail.jpg";
 import watchImg from "@/assets/project-watch-adapter.jpg";
 import watchDetailImg from "@/assets/project-watch-adapter-detail.jpg";
-import pingPongImg from "@/assets/project-ping-pong.jpg";
+import pingPongImg from "@/assets/pingPongTIMSP.png";
 import pingPongDetailImg from "@/assets/project-ping-pong-detail.jpg";
 
 
