@@ -53,36 +53,37 @@ export const projects: Project[] = [
     summary: " ",
     sections: {
       objective:
-        "Create a compact, low-power Bluetooth Low Energy (BLE) pager to send alerts across a household, with a focus on low latency and acknowledgement (ACK) of received messages.",
+        "Create a compact, low-power Bluetooth pager to send alerts across a household, with a focus on low latency and acknowledgement (ACK) of received messages.",
       pairs: [
         {
-          challenge: "Establishing a secure ACK mechanism for received messages.",
+          challenge: "Establishing a secure acknowledgment (ACK) mechanism for received messages.",
           solution:
-            "Implemented a custom BLE service with built-in acknowledgment packets so the sender knows the pager received and displayed the note.",
+            "Implementing 2 on-board LEDs on each reciver and transmitter, to validate BLE connection, and verify transmitted messages.",
         },
         {
           challenge: "Optimizing battery life on a small cell.",
           solution:
-            "Tuned the ESP32 deep-sleep cycle and BLE advertising intervals to keep average current draw low between messages.",
+            "Enabling ESP32 sleep, and utilizing Bluetooth Low Energy (BLE) to keep average current draw low between messages.",
         },
         {
           challenge: "Fitting a unique battery module on a compact board.",
           solution:
-            "Designed a custom PCB footprint in Altium and laid out a 2-layer board around the battery to keep the enclosure small.",
+            "Designing a custom PCB footprint in Altium Designer for a 2-layer PCB" + 
+            " by utilizing standardized pin header layouts.",
         },
         {
-          challenge: "Reliable communication through walls and across the house.",
+          challenge: "Communicating reliably through walls and across the house.",
           solution:
-            "Selected antenna placement and BLE PHY settings to hold a link across multiple rooms with minimal dropped packets.",
+            "Optimizing antenna placement, ACK mechanism, and minimizng device separation to increase range and reliability of BLE communication.",
         },
         {
-          challenge: "Readable LCD in very different lighting conditions.",
+          challenge: "Varying LCD text and background brightness to adapt to different lighting conditions.",
           solution:
-            "Added variable LCD brightness control so the screen stays legible from a dim bedroom to a sunlit kitchen.",
+            "Adding potentiometers to easily control LCD brightness keeping the screen stays readable under all lighting conditions.",
         },
       ],
       results:
-        "A working pager and companion app: send a short message, the pager buzzes, then holds the note on-screen until you dismiss it.",
+        "results",
     },
     image: pagerImg,
     imageAlt: "Custom Bluetooth pager PCB on light blue linen.",
