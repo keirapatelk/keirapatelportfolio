@@ -1,7 +1,7 @@
 import pagerImg from "@/assets/bluetoothPagerPhoto.jpg";
 import pagerDetailImg from "@/assets/project-pager-detail.jpg";
-import fpgaDiceGameImg from "@/assets/fpgaDiceGame.png";
-import fpgaQuartusImg from "@/assets/fpgaQuartus.png";
+import fpgaImg from "@/assets/project-fpga.jpg";
+import fpgaDetailImg from "@/assets/project-fpga-detail.jpg";
 import musicImg from "@/assets/project-music.jpg";
 import musicDetailImg from "@/assets/project-music-detail.jpg";
 
@@ -27,7 +27,7 @@ export const projects: Project[] = [
     kicker: "A pocket-sized message device, schematic to solder.",
     year: "2025",
     role: "Hardware & firmware",
-    stack: ["KiCad", "nRF52", "C", "BLE", "Reflow"],
+    stack: ["ESP32", "SPI", "C++", "Altium Designer", "Arduino IDE"],
     summary: "Custom two-layer PCB with an e-ink display and BLE messaging.",
     body: [
       "Designed a two-layer PCB around an nRF52 module with a low-power e-ink display and a haptic driver. Every part was hand-picked for a 30-day battery target.",
@@ -53,11 +53,11 @@ export const projects: Project[] = [
       "A rolling set of FPGA experiments — from a pipelined UART to a small audio FIR filter — built to internalize how the pieces of a real datapath fit together.",
       "Every module ships with a self-checking testbench. Simulating before flashing has saved me more hours than I can count.",
     ],
-    image: fpgaDiceGameImg,
-    imageAlt: "FPGA dice game output on a development board.",
+    image: fpgaImg,
+    imageAlt: "FPGA development board glowing with blue LEDs.",
     images: [
-      { src: fpgaDiceGameImg, alt: "FPGA dice game output on a development board." },
-      { src: fpgaQuartusImg, alt: "Quartus IDE with the FPGA project open." },
+      { src: fpgaImg, alt: "FPGA development board glowing with blue LEDs." },
+      { src: fpgaDetailImg, alt: "FPGA board with a waveform display and Verilog code in the background." },
     ],
   },
   {
