@@ -23,7 +23,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "bluetooth-pager",
-    title: "Bluetooth PCB Pager",
+    title: "PCB Bluetooth Pager",
     kicker: "A pocket-sized message device, schematic to solder.",
     year: "2025",
     role: "Hardware & firmware",
@@ -43,11 +43,11 @@ export const projects: Project[] = [
 
   {
     slug: "fpga-playground",
-    title: "FPGA Signal Playground",
+    title: "FPGA Dice Game",
     kicker: "Learning digital design by building it in Verilog.",
     year: "2024",
     role: "RTL & verification",
-    stack: ["Verilog", "Vivado", "Artix-7", "UART", "Testbenches"],
+    stack: ["Quartus Prime", "Intel DE10-Lite", "Mealy FSM", "Karnaugh Maps", "Digital Logic"],
     summary: "Rolling set of FPGA experiments — UART, FIR filters, and more.",
     body: [
       "A rolling set of FPGA experiments — from a pipelined UART to a small audio FIR filter — built to internalize how the pieces of a real datapath fit together.",
@@ -62,11 +62,11 @@ export const projects: Project[] = [
   },
   {
     slug: "music-player",
-    title: "Handheld Music Player",
+    title: "Embedded Audio Player",
     kicker: "One dial, one screen, one afternoon of songs.",
     year: "2024",
     role: "End-to-end build",
-    stack: ["ESP32", "I²S DAC", "Fusion 360", "3D print"],
+    stack: ["ESP32", "I²S DAC", "I2C", "SPI", "Interrupts", "State Machine"],
     summary: "ESP32-driven FLAC player with a rotary encoder and printed shell.",
     body: [
       "A tiny music player with a rotary encoder and a 1.3\" screen. FLAC decoding on an ESP32, driven into a PCM5102 DAC, wrapped in a machined-feeling printed shell.",
@@ -81,7 +81,7 @@ export const projects: Project[] = [
   },
   {
     slug: "mammoten-website",
-    title: "Mammoten Vibecoded Website",
+    title: "MammoTEN Vibecoded Website",
     kicker: "A vibecoded marketing site built fast and loose.",
     year: "2025",
     role: "Design & build",
@@ -100,11 +100,11 @@ export const projects: Project[] = [
   },
   {
     slug: "asa-water-polo-tracker",
-    title: "Aggie Sports Analytics Water Polo Tracker",
+    title: "Computer Vision Water Polo Tracker",
     kicker: "Live stat tracking for UC Davis water polo.",
     year: "2025",
     role: "Software & analytics",
-    stack: ["Python", "React", "Data viz"],
+    stack: ["Python", "React", "PostgreSQL", "OpenCV"],
     summary: "A live water polo stat-tracking tool built with Aggie Sports Analytics.",
     body: [
       "Worked with the Aggie Sports Analytics club to build a live water polo stat tracker — logging shots, saves, exclusions, and possession in real time.",
@@ -138,11 +138,11 @@ export const projects: Project[] = [
   },
   {
     slug: "pig-dice-game",
-    title: "PIG Dice Game",
+    title: "MATLAB Online PIG Game",
     kicker: "A classic risk-it-or-bank-it dice game.",
     year: "2023",
     role: "Software",
-    stack: ["Python", "CLI"],
+    stack: ["MATLAB", "ThingSpeak", "Online Gameplay", "MATLAB App Designer"],
     summary: "An implementation of the PIG dice game with a simple AI opponent.",
     body: [
       "Built the classic PIG dice game as a small programming exercise — roll to build a turn score, but a 1 wipes it out.",
@@ -157,11 +157,11 @@ export const projects: Project[] = [
   },
   {
     slug: "wheelchair-restraint",
-    title: "Wheelchair Restraint System",
+    title: "CAD Wheelchair Restraint System",
     kicker: "A safer, faster restraint mechanism.",
     year: "2024",
     role: "Mechanical design",
-    stack: ["CAD", "Prototyping", "Human factors"],
+    stack: ["Fusion 360", "Arduino IDE", "Bambu Studio", "AutoCAD", "Laser Cutting"],
     summary: "A prototype restraint system designed for quicker, safer wheelchair securement.",
     body: [
       "Designed a wheelchair restraint prototype aimed at cutting the time it takes to secure a chair in a vehicle without sacrificing safety.",
@@ -176,11 +176,11 @@ export const projects: Project[] = [
   },
   {
     slug: "watch-adapter",
-    title: "3D Printed Watch Adapter",
+    title: "Watch & Sensor Adapter",
     kicker: "A tiny part to bridge two incompatible bands.",
     year: "2024",
     role: "CAD & print",
-    stack: ["Fusion 360", "FDM", "Tolerancing"],
+    stack: ["Fusion 360", "Bambu Studio"],
     summary: "A 3D printed adapter to fit a non-standard band to a watch case.",
     body: [
       "Modeled and printed a small adapter to fit a band I liked onto a watch case it wasn't made for. Most of the work was in the tolerances — the spring bar pockets had to be right within a tenth of a millimeter.",
@@ -195,11 +195,11 @@ export const projects: Project[] = [
   },
   {
     slug: "ping-pong-game",
-    title: "Ping Pong Microcontroller Game",
+    title: "TI-MSP Ping Pong ",
     kicker: "Pong on a microcontroller with real buttons.",
     year: "2023",
     role: "Firmware & hardware",
-    stack: ["C", "STM32", "OLED", "Buttons"],
+    stack: ["C", "TI-MSPEXP430", "Interrupts"],
     summary: "A microcontroller-driven Pong game with a small OLED and physical buttons.",
     body: [
       "Wrote a Pong clone in C for a microcontroller, driving a small OLED and reading two physical buttons per player.",
