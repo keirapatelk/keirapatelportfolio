@@ -91,11 +91,11 @@ export const projects: Project[] = [
       "Built the Mammoten site in a single vibecoded sprint — going from a rough moodboard to a shipped marketing page in an afternoon.",
       "The goal was to lean into intuition over process: pick fonts that felt right, let the copy breathe, and ship before second-guessing it.",
     ],
-    image: fpgaImg,
+    image: musicImg,
     imageAlt: "Mammoten website preview.",
     images: [
-      { src: fpgaImg, alt: "Mammoten website preview." },
-      { src: fpgaDetailImg, alt: "Mammoten website detail view." },
+      { src: musicImg, alt: "Mammoten website preview." },
+      { src: musicDetailImg, alt: "Mammoten website detail view." },
     ],
   },
   {
@@ -148,11 +148,11 @@ export const projects: Project[] = [
       "Built the classic PIG dice game as a small programming exercise — roll to build a turn score, but a 1 wipes it out.",
       "Added a lightweight strategy opponent that decides when to bank based on the current score gap, which turned out to be a fun little decision-theory rabbit hole.",
     ],
-    image: fpgaImg,
+    image: pagerImg,
     imageAlt: "PIG dice game screenshot.",
     images: [
-      { src: fpgaImg, alt: "PIG dice game screenshot." },
-      { src: fpgaDetailImg, alt: "Game logic detail." },
+      { src: pagerImg, alt: "PIG dice game screenshot." },
+      { src: pagerDetailImg, alt: "Game logic detail." },
     ],
   },
   {
@@ -205,11 +205,11 @@ export const projects: Project[] = [
       "Wrote a Pong clone in C for a microcontroller, driving a small OLED and reading two physical buttons per player.",
       "The interesting part was keeping the frame timing steady while polling inputs — a good excuse to learn about hardware timers and interrupt priorities.",
     ],
-    image: fpgaImg,
+    image: musicImg,
     imageAlt: "Microcontroller Pong game.",
     images: [
-      { src: fpgaImg, alt: "Microcontroller Pong game." },
-      { src: fpgaDetailImg, alt: "OLED display detail." },
+      { src: musicImg, alt: "Microcontroller Pong game." },
+      { src: musicDetailImg, alt: "OLED display detail." },
     ],
   },
 ];
