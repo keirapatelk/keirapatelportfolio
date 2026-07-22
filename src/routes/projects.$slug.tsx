@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { getProject, projects, type Project } from "@/lib/projects";
+import circuitBranch from "@/assets/circuit-branch.png.asset.json";
 
 export const Route = createFileRoute("/projects/$slug")({
   loader: ({ params }) => {
@@ -50,7 +51,13 @@ function ProjectDetail() {
           </Link>
         </div>
 
-        <section className="pt-10 pb-10">
+        <section className="relative pt-10 pb-10">
+          <img
+            src={circuitBranch.url}
+            alt=""
+            aria-hidden
+            className="pointer-events-none absolute right-0 top-6 hidden h-32 w-auto opacity-30 sm:block"
+          />
           <div className="mb-6 flex items-center gap-4 text-xs uppercase tracking-[0.24em] text-muted-foreground">
             <span className="text-accent">{p.year}</span>
             <span className="h-px flex-1 bg-border" />
@@ -155,7 +162,13 @@ function ProjectDetail() {
           </div>
         </section>
 
-        <section className="border-t border-border py-10">
+        <section className="relative border-t border-border py-10">
+          <img
+            src={circuitBranch.url}
+            alt=""
+            aria-hidden
+            className="pointer-events-none absolute right-2 bottom-4 hidden h-24 w-auto -scale-x-100 opacity-20 sm:block"
+          />
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
             Next project
           </p>
