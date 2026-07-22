@@ -96,13 +96,13 @@ function ProjectDetail() {
         </div>
 
 
-        <section className="grid gap-8 py-12 sm:grid-cols-[10rem_1fr]">
-          <dl className="space-y-4 text-sm">
+        <section className="border-y border-border py-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-[auto_auto_1fr]">
             <div>
               <dt className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
                 Role
               </dt>
-              <dd className="mt-1">{p.role}</dd>
+              <dd className="mt-1 text-sm leading-relaxed">{p.role}</dd>
             </div>
             <div>
               <dt className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
@@ -119,47 +119,53 @@ function ProjectDetail() {
                 ))}
               </dd>
             </div>
-          </dl>
-          <div className="space-y-10 text-base leading-relaxed text-foreground/85">
             {p.sections.objective && (
               <div>
-                <SectionLabel>Objective</SectionLabel>
-                <p className="mt-3">{p.sections.objective}</p>
-              </div>
-            )}
-
-            {p.sections.pairs && p.sections.pairs.length > 0 && (
-              <div>
-                <SectionLabel>Challenges & Solutions</SectionLabel>
-                <div className="mt-5 grid gap-5">
-                  {p.sections.pairs.map((cs, i) => (
-                    <div
-                      key={i}
-                      className="grid grid-cols-1 gap-4 rounded-xl border border-border bg-card p-5 sm:grid-cols-[1fr_auto_1fr] sm:items-start sm:gap-6"
-                    >
-                      <p className="text-sm leading-relaxed text-foreground/85">
-                        {cs.challenge}
-                      </p>
-                      <div className="flex items-center justify-center sm:h-full">
-                        <span className="hidden text-lg text-accent sm:inline-block">→</span>
-                        <span className="text-lg text-accent sm:hidden">↓</span>
-                      </div>
-                      <p className="text-sm leading-relaxed text-foreground/90">
-                        {cs.solution}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {p.sections.results && (
-              <div>
-                <SectionLabel>Results</SectionLabel>
-                <p className="mt-3">{p.sections.results}</p>
+                <dt className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                  Objective
+                </dt>
+                <dd className="mt-1 text-sm leading-relaxed text-foreground/85">
+                  {p.sections.objective}
+                </dd>
               </div>
             )}
           </div>
+        </section>
+
+        <section className="grid grid-cols-1 gap-8 py-12 md:grid-cols-2">
+          {p.sections.pairs && p.sections.pairs.length > 0 && (
+            <div>
+              <SectionLabel>Challenges & Solutions</SectionLabel>
+              <div className="mt-5 grid gap-5">
+                {p.sections.pairs.map((cs, i) => (
+                  <div
+                    key={i}
+                    className="grid grid-cols-1 gap-4 rounded-xl border border-border bg-card p-5 sm:grid-cols-[1fr_auto_1fr] sm:items-start sm:gap-6"
+                  >
+                    <p className="text-sm leading-relaxed text-foreground/85">
+                      {cs.challenge}
+                    </p>
+                    <div className="flex items-center justify-center sm:h-full">
+                      <span className="hidden text-lg text-accent sm:inline-block">→</span>
+                      <span className="text-lg text-accent sm:hidden">↓</span>
+                    </div>
+                    <p className="text-sm leading-relaxed text-foreground/90">
+                      {cs.solution}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {p.sections.results && (
+            <div>
+              <SectionLabel>Results</SectionLabel>
+              <p className="mt-3 text-sm leading-relaxed text-foreground/85">
+                {p.sections.results}
+              </p>
+            </div>
+          )}
         </section>
 
         <section className="relative border-t border-border py-10">
