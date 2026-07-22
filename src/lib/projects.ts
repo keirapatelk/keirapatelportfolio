@@ -1,7 +1,7 @@
 import pagerImg from "@/assets/bluetoothPagerPhoto.jpg";
 import pagerDetailImg from "@/assets/project-pager-detail.jpg";
-import fpgaImg from "@/assets/project-fpga.jpg";
-import fpgaDetailImg from "@/assets/project-fpga-detail.jpg";
+import fpgaDiceGameImg from "@/assets/fpgaDiceGame.png";
+import fpgaQuartusImg from "@/assets/fpgaQuartus.png";
 import musicImg from "@/assets/project-music.jpg";
 import musicDetailImg from "@/assets/project-music-detail.jpg";
 
@@ -40,8 +40,6 @@ export const projects: Project[] = [
     ],
 
   },
-import fpgaDiceGameImg from "@/assets/fpgaDiceGame.png";
-import fpgaQuartusImg from "@/assets/fpgaQuartus.png";
 
   {
     slug: "fpga-playground",
