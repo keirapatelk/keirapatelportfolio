@@ -17,6 +17,8 @@ import watchImg from "@/assets/project-watch-adapter.jpg";
 import watchDetailImg from "@/assets/project-watch-adapter-detail.jpg";
 import pingPongImg from "@/assets/pingPongTIMSP.png";
 import pingPongDetailImg from "@/assets/project-ping-pong-detail.jpg";
+import ieeeWebsiteImg from "@/assets/project-ieee-website.jpg";
+import ieeeWebsiteDetailImg from "@/assets/project-ieee-website-detail.jpg";
 
 
 export type Project = {
@@ -223,6 +225,25 @@ export const projects: Project[] = [
     images: [
       { src: pingPongImg, alt: "Microcontroller Pong game." },
       { src: pingPongDetailImg, alt: "OLED display detail." },
+    ],
+  },
+  {
+    slug: "ieee-website-vibecoded",
+    title: "IEEE Website Vibecoded",
+    kicker: "A club website built with vibe and velocity.",
+    year: "2025",
+    role: "Design & build",
+    stack: ["React", "Tailwind", "Vite"],
+    summary: "A vibecoded website for the IEEE student branch — shipped fast, kept clean.",
+    body: [
+      "Built the IEEE student branch site in a vibecoded sprint, moving from a loose brief to a live page in a single session.",
+      "The focus was clarity over complexity: clean navigation, bold event cards, and a straightforward path for new members to join.",
+    ],
+    image: ieeeWebsiteImg,
+    imageAlt: "IEEE student branch website preview.",
+    images: [
+      { src: ieeeWebsiteImg, alt: "IEEE student branch website preview." },
+      { src: ieeeWebsiteDetailImg, alt: "IEEE website detail view showing event cards and member join section." },
     ],
   },
 ];
