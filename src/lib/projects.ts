@@ -40,6 +40,9 @@ export const projects: Project[] = [
     ],
 
   },
+import fpgaDiceGameImg from "@/assets/fpgaDiceGame.png";
+import fpgaQuartusImg from "@/assets/fpgaQuartus.png";
+
   {
     slug: "fpga-playground",
     title: "FPGA Signal Playground",
@@ -52,11 +55,11 @@ export const projects: Project[] = [
       "A rolling set of FPGA experiments — from a pipelined UART to a small audio FIR filter — built to internalize how the pieces of a real datapath fit together.",
       "Every module ships with a self-checking testbench. Simulating before flashing has saved me more hours than I can count.",
     ],
-    image: fpgaImg,
-    imageAlt: "FPGA development board glowing with blue LEDs.",
+    image: fpgaDiceGameImg,
+    imageAlt: "FPGA dice game output on a development board.",
     images: [
-      { src: fpgaImg, alt: "FPGA development board glowing with blue LEDs." },
-      { src: fpgaDetailImg, alt: "FPGA board with a waveform display and Verilog code in the background." },
+      { src: fpgaDiceGameImg, alt: "FPGA dice game output on a development board." },
+      { src: fpgaQuartusImg, alt: "Quartus IDE with the FPGA project open." },
     ],
   },
   {
