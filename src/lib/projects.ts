@@ -20,6 +20,13 @@ import pingPongDetailImg from "@/assets/project-ping-pong-detail.jpg";
 import ieeeWebsiteImg from "@/assets/ieeeWebsite.png";
 import ieeeWebsiteDetailImg from "@/assets/ieeeWebsiteDetail.png";
 
+export type ChallengeSolution = { challenge: string; solution: string };
+
+export type ProjectSections = {
+  objective?: string;
+  pairs?: ChallengeSolution[];
+  results?: string;
+};
 
 export type Project = {
   slug: string;
@@ -29,7 +36,7 @@ export type Project = {
   role: string;
   stack: string[];
   summary: string;
-  body: string[];
+  sections: ProjectSections;
   image: string;
   imageAlt: string;
   images: { src: string; alt: string }[];
@@ -44,24 +51,44 @@ export const projects: Project[] = [
     role: "Hardware & firmware",
     stack: ["ESP32", "SPI", "C++", "Altium Designer", "Arduino IDE"],
     summary: " ",
-    body: [
-      "Objective: Create a compact, low-power Bluetooth Low Energy (BLE) pager to send alerts" +
-      " across a household, with a focus on low latency and acknowlegement (ACK) of received messages.",
-      "Challenges: establishing a secure ACK mechanism," + " optimizing battery life," + 
-      " creating a custom PCB footprint for a unique battery module," + 
-      " establishing secure communication through walls and long distances" + 
-      " creating variable LCD brightness for different household environments",
-      "Solutions: Implemented a custom BLE service with acknowledgment features, optimized the ESP32" +
-      "sleep mode to reduce power draw, and designed a 2-layer PCB with a custom battery footprint.",
-      "Key Implementations: Wrote the BLE service and a small companion app that lets a friend send a short message; the pager buzzes, then holds the note on-screen until you dismiss it.",
-      "Results: ",
-    ],
+    sections: {
+      objective:
+        "Create a compact, low-power Bluetooth Low Energy (BLE) pager to send alerts across a household, with a focus on low latency and acknowledgement (ACK) of received messages.",
+      pairs: [
+        {
+          challenge: "Establishing a secure ACK mechanism for received messages.",
+          solution:
+            "Implemented a custom BLE service with built-in acknowledgment packets so the sender knows the pager received and displayed the note.",
+        },
+        {
+          challenge: "Optimizing battery life on a small cell.",
+          solution:
+            "Tuned the ESP32 deep-sleep cycle and BLE advertising intervals to keep average current draw low between messages.",
+        },
+        {
+          challenge: "Fitting a unique battery module on a compact board.",
+          solution:
+            "Designed a custom PCB footprint in Altium and laid out a 2-layer board around the battery to keep the enclosure small.",
+        },
+        {
+          challenge: "Reliable communication through walls and across the house.",
+          solution:
+            "Selected antenna placement and BLE PHY settings to hold a link across multiple rooms with minimal dropped packets.",
+        },
+        {
+          challenge: "Readable LCD in very different lighting conditions.",
+          solution:
+            "Added variable LCD brightness control so the screen stays legible from a dim bedroom to a sunlit kitchen.",
+        },
+      ],
+      results:
+        "A working pager and companion app: send a short message, the pager buzzes, then holds the note on-screen until you dismiss it.",
+    },
     image: pagerImg,
     imageAlt: "Custom Bluetooth pager PCB on light blue linen.",
     images: [
       { src: pagerImg, alt: "Custom Bluetooth pager PCB on light blue linen." },
     ],
-
   },
 
   {
@@ -72,10 +99,29 @@ export const projects: Project[] = [
     role: "RTL & verification",
     stack: ["Quartus Prime", "Intel DE10-Lite", "Mealy FSM", "Karnaugh Maps", "Digital Logic"],
     summary: "Rolling set of FPGA experiments — UART, FIR filters, and more.",
-    body: [
-      "A rolling set of FPGA experiments — from a pipelined UART to a small audio FIR filter — built to internalize how the pieces of a real datapath fit together.",
-      "Every module ships with a self-checking testbench. Simulating before flashing has saved me more hours than I can count.",
-    ],
+    sections: {
+      objective:
+        "Internalize digital design fundamentals by building a working dice game in Verilog on the DE10-Lite, from FSM to physical I/O.",
+      pairs: [
+        {
+          challenge: "Translating game rules into clean synchronous logic.",
+          solution:
+            "Modeled gameplay as a Mealy FSM with clearly separated state, next-state, and output logic.",
+        },
+        {
+          challenge: "Debouncing physical buttons without adding jitter.",
+          solution:
+            "Added a small synchronizer and debounce counter so a single press produces a single clean event.",
+        },
+        {
+          challenge: "Catching regressions when tweaking modules.",
+          solution:
+            "Wrote self-checking testbenches for every module so simulation catches bugs before flashing the board.",
+        },
+      ],
+      results:
+        "A playable dice game running on the DE10-Lite with LED and 7-segment output, and a reusable testbench pattern I now reach for on every RTL project.",
+    },
     image: fpgaImg,
     imageAlt: "FPGA development board glowing with blue LEDs.",
     images: [
@@ -91,10 +137,29 @@ export const projects: Project[] = [
     role: "End-to-end build",
     stack: ["ESP32", "I²S DAC", "I2C", "SPI", "Interrupts", "State Machine"],
     summary: "ESP32-driven FLAC player with a rotary encoder and printed shell.",
-    body: [
-      "A tiny music player with a rotary encoder and a 1.3\" screen. FLAC decoding on an ESP32, driven into a PCM5102 DAC, wrapped in a machined-feeling printed shell.",
-      "The goal wasn't to replace a phone — it was to build something that only does one thing, and does it calmly.",
-    ],
+    sections: {
+      objective:
+        "Build a small, focused music player that only does one thing — decode and play FLAC files from a rotary-encoder UI — and does it calmly.",
+      pairs: [
+        {
+          challenge: "Decoding FLAC in real time on a resource-constrained ESP32.",
+          solution:
+            "Streamed audio into an I²S PCM5102 DAC with a tight buffer loop so playback stays glitch-free.",
+        },
+        {
+          challenge: "Handling encoder input without missing detents.",
+          solution:
+            "Wired the encoder through interrupts and a small debounce state machine so every click registers exactly once.",
+        },
+        {
+          challenge: "Making the device feel like a real product, not a breadboard.",
+          solution:
+            "Designed a printed shell around the PCB with recesses for the screen and dial so it feels machined in hand.",
+        },
+      ],
+      results:
+        "A pocket player with a 1.3\" screen and a rotary encoder that boots straight into music — no menus, no distractions.",
+    },
     image: musicImg,
     imageAlt: "Handheld music player with a round dial on pale blue paper.",
     images: [
@@ -110,10 +175,24 @@ export const projects: Project[] = [
     role: "Design & build",
     stack: ["React", "Tailwind", "Vite"],
     summary: "A vibecoded website for Mammoten — fast iteration, clean feel.",
-    body: [
-      "Built the Mammoten site in a single vibecoded sprint — going from a rough moodboard to a shipped marketing page in an afternoon.",
-      "The goal was to lean into intuition over process: pick fonts that felt right, let the copy breathe, and ship before second-guessing it.",
-    ],
+    sections: {
+      objective:
+        "Take Mammoten from a rough moodboard to a shipped marketing site in a single afternoon, leaning on intuition over process.",
+      pairs: [
+        {
+          challenge: "Choosing a visual direction without a full brand system.",
+          solution:
+            "Picked typography and spacing that felt right in the moment and committed instead of iterating forever.",
+        },
+        {
+          challenge: "Keeping copy tight while explaining the product.",
+          solution:
+            "Let the copy breathe with generous whitespace and cut anything that didn't earn its line.",
+        },
+      ],
+      results:
+        "A live marketing page shipped in one sprint that still reads clean today.",
+    },
     image: mammotenImg,
     imageAlt: "Mammoten website preview.",
     images: [
@@ -129,10 +208,24 @@ export const projects: Project[] = [
     role: "Software & analytics",
     stack: ["Python", "React", "PostgreSQL", "OpenCV"],
     summary: "A live water polo stat-tracking tool built with Aggie Sports Analytics.",
-    body: [
-      "Worked with the Aggie Sports Analytics club to build a live water polo stat tracker — logging shots, saves, exclusions, and possession in real time.",
-      "The bigger challenge was turning raw event logs into something coaches could actually read on the pool deck between quarters.",
-    ],
+    sections: {
+      objective:
+        "Give UC Davis water polo coaches live, on-deck visibility into shots, saves, exclusions, and possession as the game happens.",
+      pairs: [
+        {
+          challenge: "Logging fast-moving events without falling behind play.",
+          solution:
+            "Built a keyboard-driven event logger so a single operator can tag events with minimal latency.",
+        },
+        {
+          challenge: "Turning raw event logs into something coaches can read between quarters.",
+          solution:
+            "Aggregated events into a coach-facing dashboard with per-player summaries and possession trends.",
+        },
+      ],
+      results:
+        "A working tracker used at practice with coaches able to pull up quarter-by-quarter stats on the pool deck.",
+    },
     image: waterPoloImg,
     imageAlt: "Water polo analytics dashboard.",
     images: [
@@ -148,10 +241,24 @@ export const projects: Project[] = [
     role: "Intern",
     stack: ["OBD-II", "Diagnostics", "Field work"],
     summary: "Interned at Jamboree Smog running emissions tests and diagnostics.",
-    body: [
-      "Spent a summer at Jamboree Smog learning the ins and outs of vehicle emissions testing — OBD-II diagnostics, tailpipe measurements, and the paperwork behind a clean cert.",
-      "It was the first time I connected classroom electronics to the greasy, real-world version of the same problem.",
-    ],
+    sections: {
+      objective:
+        "Learn the practical side of vehicle emissions testing end-to-end — from OBD-II diagnostics to tailpipe measurements to certification paperwork.",
+      pairs: [
+        {
+          challenge: "Reading intermittent OBD-II fault codes on older vehicles.",
+          solution:
+            "Cross-referenced live sensor data with freeze-frame data to isolate real faults from noise.",
+        },
+        {
+          challenge: "Connecting classroom circuit theory to greasy real hardware.",
+          solution:
+            "Traced sensor and actuator signals on real cars to see textbook waveforms show up in the shop.",
+        },
+      ],
+      results:
+        "A summer of hands-on diagnostics that permanently changed how I think about the electronics I design.",
+    },
     image: smogImg,
     imageAlt: "Smog testing equipment.",
     images: [
@@ -167,10 +274,24 @@ export const projects: Project[] = [
     role: "Software",
     stack: ["MATLAB", "ThingSpeak", "Online Gameplay", "MATLAB App Designer"],
     summary: "An implementation of the PIG dice game with a simple AI opponent.",
-    body: [
-      "Built the classic PIG dice game as a small programming exercise — roll to build a turn score, but a 1 wipes it out.",
-      "Added a lightweight strategy opponent that decides when to bank based on the current score gap, which turned out to be a fun little decision-theory rabbit hole.",
-    ],
+    sections: {
+      objective:
+        "Implement the classic PIG dice game in MATLAB App Designer with online play and a lightweight strategy opponent.",
+      pairs: [
+        {
+          challenge: "Syncing turns between two players over the network.",
+          solution:
+            "Used ThingSpeak channels as a shared state store so each client polls for the current turn.",
+        },
+        {
+          challenge: "Making the AI feel decisive without being trivial.",
+          solution:
+            "Wrote a scoring heuristic that decides when to bank based on the current lead or deficit.",
+        },
+      ],
+      results:
+        "A working online PIG game with a UI, network sync, and an opponent that plays a reasonable game.",
+    },
     image: pigGameImg,
     imageAlt: "PIG dice game screenshot.",
     images: [
@@ -186,10 +307,24 @@ export const projects: Project[] = [
     role: "Mechanical design",
     stack: ["Fusion 360", "Arduino IDE", "Bambu Studio", "AutoCAD", "Laser Cutting"],
     summary: "A prototype restraint system designed for quicker, safer wheelchair securement.",
-    body: [
-      "Designed a wheelchair restraint prototype aimed at cutting the time it takes to secure a chair in a vehicle without sacrificing safety.",
-      "The design went through several iterations informed by user interviews — the final version prioritized one-handed operation and clear tactile feedback when locked.",
-    ],
+    sections: {
+      objective:
+        "Cut the time it takes to secure a wheelchair in a vehicle without sacrificing safety, informed by real user interviews.",
+      pairs: [
+        {
+          challenge: "Existing restraints require two hands and multiple steps.",
+          solution:
+            "Designed a mechanism prioritized for one-handed operation with fewer discrete steps.",
+        },
+        {
+          challenge: "Users can't always tell when the restraint is fully locked.",
+          solution:
+            "Added a tactile detent at the locked position so the user feels a clear click when secure.",
+        },
+      ],
+      results:
+        "A physical prototype refined across several iterations, tested against the original interview criteria.",
+    },
     image: wheelchairImg,
     imageAlt: "Wheelchair restraint prototype.",
     images: [
@@ -205,10 +340,24 @@ export const projects: Project[] = [
     role: "CAD & print",
     stack: ["Fusion 360", "Bambu Studio"],
     summary: "A 3D printed adapter to fit a non-standard band to a watch case.",
-    body: [
-      "Modeled and printed a small adapter to fit a band I liked onto a watch case it wasn't made for. Most of the work was in the tolerances — the spring bar pockets had to be right within a tenth of a millimeter.",
-      "It's the kind of project that takes an evening and quietly makes something you use every day better.",
-    ],
+    sections: {
+      objective:
+        "Model and print a small adapter that lets a band I liked fit a watch case it wasn't made for.",
+      pairs: [
+        {
+          challenge: "Spring bar pockets have to be right within a tenth of a millimeter.",
+          solution:
+            "Iterated on tolerances with test prints until the bars snapped in cleanly with no wiggle.",
+        },
+        {
+          challenge: "The adapter has to disappear visually against the case.",
+          solution:
+            "Matched fillets and chamfers to the watch case profile so the seam reads as intentional.",
+        },
+      ],
+      results:
+        "An evening project that quietly makes something I wear every day fit right.",
+    },
     image: watchImg,
     imageAlt: "3D printed watch adapter.",
     images: [
@@ -224,10 +373,24 @@ export const projects: Project[] = [
     role: "Firmware & hardware",
     stack: ["C", "TI-MSPEXP430", "Interrupts"],
     summary: "A microcontroller-driven Pong game with a small OLED and physical buttons.",
-    body: [
-      "Wrote a Pong clone in C for a microcontroller, driving a small OLED and reading two physical buttons per player.",
-      "The interesting part was keeping the frame timing steady while polling inputs — a good excuse to learn about hardware timers and interrupt priorities.",
-    ],
+    sections: {
+      objective:
+        "Write a Pong clone in C on the TI MSP430, driving a small OLED and reading two physical buttons per player.",
+      pairs: [
+        {
+          challenge: "Keeping frame timing steady while polling inputs.",
+          solution:
+            "Used hardware timers and prioritized interrupts to separate render cadence from input handling.",
+        },
+        {
+          challenge: "Fitting the game loop in limited flash and RAM.",
+          solution:
+            "Kept the render path tight and reused buffers instead of allocating per frame.",
+        },
+      ],
+      results:
+        "A playable two-player Pong on the OLED with responsive controls and consistent frame timing.",
+    },
     image: pingPongImg,
     imageAlt: "Microcontroller Pong game.",
     images: [
@@ -243,10 +406,24 @@ export const projects: Project[] = [
     role: "Design & build",
     stack: ["React", "Tailwind", "Vite"],
     summary: "A vibecoded website for the IEEE student branch — shipped fast, kept clean.",
-    body: [
-      "Built the IEEE student branch site in a vibecoded sprint, moving from a loose brief to a live page in a single session.",
-      "The focus was clarity over complexity: clean navigation, bold event cards, and a straightforward path for new members to join.",
-    ],
+    sections: {
+      objective:
+        "Take the IEEE student branch from a loose brief to a live site in a single vibecoded session.",
+      pairs: [
+        {
+          challenge: "Communicating events clearly to new members.",
+          solution:
+            "Designed bold event cards as the primary content unit so upcoming events are unmissable.",
+        },
+        {
+          challenge: "Making it easy for someone new to actually join.",
+          solution:
+            "Kept navigation minimal and put a straightforward join path one click away from every page.",
+        },
+      ],
+      results:
+        "A live club site with clear navigation, bold event cards, and a simple membership funnel.",
+    },
     image: ieeeWebsiteImg,
     imageAlt: "IEEE student branch website preview.",
     images: [
