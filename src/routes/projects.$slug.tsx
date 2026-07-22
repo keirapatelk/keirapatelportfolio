@@ -123,31 +123,36 @@ function ProjectDetail() {
 
             {p.sections.pairs && p.sections.pairs.length > 0 && (
               <div>
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  <SectionLabel>Challenges</SectionLabel>
-                  <SectionLabel tone="accent">Solutions</SectionLabel>
-                </div>
-                <ul className="mt-4 divide-y divide-border overflow-hidden rounded-xl border border-border bg-card">
+                <SectionLabel>Challenges & Solutions</SectionLabel>
+                <div className="mt-5 grid gap-5">
                   {p.sections.pairs.map((cs, i) => (
-                    <li
+                    <div
                       key={i}
-                      className="grid grid-cols-1 sm:grid-cols-2 sm:divide-x sm:divide-border"
+                      className="grid grid-cols-1 gap-4 rounded-xl border border-border bg-card p-5 sm:grid-cols-[1fr_auto_1fr] sm:items-start sm:gap-6"
                     >
-                      <div className="p-4 sm:p-5">
-                        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                          Challenge {String(i + 1).padStart(2, "0")}
+                      <div>
+                        <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
+                          Challenge
                         </p>
-                        <p className="mt-2 text-sm text-foreground/85">{cs.challenge}</p>
-                      </div>
-                      <div className="border-t border-border bg-surface/60 p-4 sm:border-t-0 sm:p-5">
-                        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
-                          Solution {String(i + 1).padStart(2, "0")}
+                        <p className="mt-2 text-sm leading-relaxed text-foreground/85">
+                          {cs.challenge}
                         </p>
-                        <p className="mt-2 text-sm text-foreground/90">{cs.solution}</p>
                       </div>
-                    </li>
+                      <div className="flex items-center justify-center sm:h-full">
+                        <span className="hidden text-lg text-accent sm:inline-block">→</span>
+                        <span className="text-lg text-accent sm:hidden">↓</span>
+                      </div>
+                      <div>
+                        <p className="text-xs font-medium uppercase tracking-[0.16em] text-accent">
+                          Solution
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed text-foreground/90">
+                          {cs.solution}
+                        </p>
+                      </div>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             )}
 
@@ -190,9 +195,6 @@ function SectionLabel({
         tone === "accent" ? "text-accent" : "text-foreground"
       }`}
     >
-      <span className="mr-2 font-mono text-xs align-middle text-muted-foreground">
-        //
-      </span>
       {children}
     </h2>
   );
