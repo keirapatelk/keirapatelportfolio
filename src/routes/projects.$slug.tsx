@@ -56,7 +56,7 @@ function ProjectDetail() {
             src={circuitBranch.url}
             alt=""
             aria-hidden
-            className="pointer-events-none absolute right-0 top-6 hidden h-32 w-auto opacity-30 sm:block"
+            className="pointer-events-none absolute right-0 top-6 hidden h-32 w-auto rotate-90 opacity-30 sm:block"
           />
           <div className="mb-6 flex items-center gap-4 text-xs uppercase tracking-[0.24em] text-muted-foreground">
             <span className="text-accent">{p.year}</span>
@@ -172,7 +172,7 @@ function ProjectDetail() {
             src={circuitBranch.url}
             alt=""
             aria-hidden
-            className="pointer-events-none absolute right-2 bottom-4 hidden h-24 w-auto -scale-x-100 opacity-20 sm:block"
+            className="pointer-events-none absolute right-2 bottom-4 hidden h-24 w-auto rotate-90 opacity-20 sm:block"
           />
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
             Next project
