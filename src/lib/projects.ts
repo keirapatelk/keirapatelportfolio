@@ -280,32 +280,80 @@ details: [
   },
 
   {
+    visible: true,
+    featured: true,
     slug: "music-player",
     title: "Embedded Audio Player",
-    kicker: "One dial, one screen, one afternoon of songs.",
-    year: "2024",
-    role: "End-to-end build",
-    stack: ["ESP32", "I²S DAC", "I2C", "SPI", "Interrupts", "State Machine"],
-    summary: "ESP32-driven FLAC player with a rotary encoder and printed shell.",
+    kicker: "Custom MP3 player with playlists, album art, and a beginner-friendly build guide.",
+    year: "2026",
+    role: "Embedded Systems / PCB Design",
+    stack: [
+      "ESP32",
+      "C++",
+      "Altium Designer",
+      "SPI",
+      "I2S",
+      "I2C",
+      "Mealy State Machine (FSM)",
+      "2 Layer Custom PCBs and Components",
+      "Hardware Interrupts",
+      "Adafruit ST7789",
+    ],
+    summary: "Custom MP3 player with playlists, album art, and a beginner-friendly build guide.",
     sections: {
+      overview:
+        "In this project, I fully designed and built a custom MP3 music player capable of browsing playlists, displaying album art, and playing audio directly from a microSD card. The design also features real JPG images and organizes songs by playlist and song order for user ease.",
       pairs: [
         {
-          challenge: "Decoding FLAC in real time on a resource-constrained ESP32.",
+          challenge: "Fully custom-rendered UI.",
           solution:
-            "Streamed audio into an I²S PCM5102 DAC with a tight buffer loop so playback stays glitch-free.",
+            "Built a screen-redraw flag into a three-state Mealy FSM so the display only updates once per state transition, minimizing unnecessary SPI writes.",
         },
         {
-          challenge: "Handling encoder input without missing detents.",
+          challenge:
+            "Dynamically load music library structure from a microSD card at runtime, rather than using hardcoded paths.",
           solution:
-            "Wired the encoder through interrupts and a small debounce state machine so every click registers exactly once.",
+            "On startup the microcontroller scans the microSD card's folder structure into playlist structs, so users only need to update the card to add songs or playlists.",
         },
         {
-          challenge: "Making the device feel like a real product, not a breadboard.",
+          challenge:
+            "Create a secondary state machine within an existing state machine to handle highlighted on-screen buttons.",
           solution:
-            "Designed a printed shell around the PCB with recesses for the screen and dial so it feels machined in hand.",
+            "The top-level FSM selects the active screen, and a nested FSM tracks the current function of the physical buttons for that screen using enumerators.",
         },
       ],
-},
+      details: [
+        {
+          title: "UI State Architecture",
+          paragraphs: [
+            "The interface runs on a three-state finite state machine (Music, Playlist, Song) that stores the active state. Rather than redrawing the display every loop cycle, I implemented a separate state flag that only triggers a screen redraw once per state transition, preventing unnecessary SPI writes to the display and minimizing delays.",
+            "Within this large state machine is a second state machine that tracks the current function of the buttons on the screen for each specific screen. The first state machine determines which screen is active, which in turn constrains which button functions are valid. The second state machine is embedded within the screen and controls the movement of the highlighted on-screen buttons as dictated by the physical pushbuttons. Enumerators are used to store the state of the second state machine.",
+          ],
+        },
+        {
+          title: "Interrupt-Driven Controls & State Machines",
+          paragraphs: [
+            "Each of the 7 physical buttons is wired to its own GPIO interrupt with an independent debounce timestamp; having interrupts run independently prevents a single input from stalling the responsiveness of others. Each ISR sets a flag and records a timestamp, but the main loop checks for these flags and calls the corresponding handler, keeping the interrupts fast.",
+            "One input required distinguishing a single click from a double click using a timing window. Since this can't be resolved quickly in an interrupt, the interrupt just records when a press occurred, while a separate check in the main loop resolves it as single or double once the window has passed, without blocking the rest of the system.",
+          ],
+        },
+        {
+          title: "Dynamic Music Library Loading",
+          paragraphs: [
+            "A playlist struct variable contains the attributes of type string for the title of the playlist, a string pointer that points to an array of songs, and an int that stores the number of songs in the playlist. Upon startup, the microcontroller scans the microSD card's folder structure into an array of playlist objects to build the music library dynamically, rather than using hardcoded folder paths.",
+            "This means that to add a playlist or songs, users only need to modify the microSD card and follow the given folder structure, but not modify any code.",
+          ],
+        },
+        {
+          title: "Beginner's Guide",
+          wide: true,
+          paragraphs: [
+            "To make the ESP32 music player accessible for beginner engineers, I designed and wrote a beginner-focused engineering guide that teaches readers how to build the system from the ground up. The guide breaks down the interactions between the ESP32, a microSD card, TFT display, physical controls, and I2S audio hardware, while introducing the embedded concepts and functions required to bring each subsystem together.",
+            "Rather than treating the project as a collection of copy and paste code, I structured the guide around problem-solving and function creation. Each chapter explains why specific hardware and software decisions were made, walks through key code components, and incorporates debugging exercises and challenges that encourage readers to modify the system themselves.",
+          ],
+        },
+      ],
+    },
     image: musicImg,
     imageAlt: "Handheld music player with a round dial on pale blue paper.",
     images: [
