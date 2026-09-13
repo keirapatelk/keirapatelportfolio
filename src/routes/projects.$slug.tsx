@@ -159,12 +159,12 @@ function ProjectDetail() {
           </section>
         )}
 
-        <section className="relative py-10">
+        <section className="relative py-8">
           <img
             src={circuitBranch.url}
             alt=""
             aria-hidden
-            className="pointer-events-none absolute bottom-4 right-2 hidden h-24 w-auto rotate-90 opacity-20 sm:block"
+            className="pointer-events-none absolute bottom-3 right-2 hidden h-20 w-auto rotate-90 opacity-20 sm:block"
           />
           <p className="font-mono text-xs uppercase text-muted-foreground">Next project</p>
           <Link
@@ -197,7 +197,7 @@ function ProjectFigure({
         loading={number === 1 ? "eager" : "lazy"}
         className={`${shape === "wide" ? "aspect-[16/7]" : "aspect-[4/3]"} h-full w-full object-cover`}
       />
-      <figcaption className="border-t border-border px-4 py-3 font-mono text-[11px] uppercase text-muted-foreground">
+      <figcaption className="border-t border-border px-3 py-2 font-mono text-[11px] uppercase text-muted-foreground">
         {String(number).padStart(2, "0")} · {image.alt}
       </figcaption>
     </figure>
@@ -208,13 +208,13 @@ function PagerDetails() {
   const study = bluetoothPagerCaseStudy;
 
   return (
-    <section className="grid gap-x-16 gap-y-12 border-y border-border py-12 md:grid-cols-2">
+    <section className="grid gap-x-10 gap-y-8 border-y border-border py-8 md:grid-cols-2">
       <CaseStudySection title="Power Optimization">{study.powerOptimization}</CaseStudySection>
       <CaseStudySection title="Custom PCB Design">{study.customPcb}</CaseStudySection>
       <CaseStudySection title="User Interface & Interaction">{study.interaction}</CaseStudySection>
       <div>
         <CaseStudyLabel>What I Learned</CaseStudyLabel>
-        <div className="mt-5 space-y-4 text-sm leading-7 text-foreground/85">
+        <div className="mt-3 space-y-2 text-sm leading-6 text-foreground/85">
           {study.learned.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
@@ -225,14 +225,14 @@ function PagerDetails() {
 }
 
 function CaseStudyLabel({ children }: { children: React.ReactNode }) {
-  return <h2 className="font-display text-xl font-semibold sm:text-2xl">{children}</h2>;
+  return <h2 className="font-display text-lg font-semibold sm:text-xl">{children}</h2>;
 }
 
 function CaseStudySection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
       <CaseStudyLabel>{title}</CaseStudyLabel>
-      <p className="mt-5 text-sm leading-7 text-foreground/85">{children}</p>
+      <p className="mt-3 text-sm leading-6 text-foreground/85">{children}</p>
     </div>
   );
 }
