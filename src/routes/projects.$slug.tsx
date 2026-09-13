@@ -68,20 +68,20 @@ function ProjectDetail() {
           </Link>
         </div>
 
-        <header className="relative pb-10 pt-10 sm:pb-14">
+        <header className="relative pb-8 pt-8 sm:pb-10">
           <img
             src={circuitBranch.url}
             alt=""
             aria-hidden
-            className="pointer-events-none absolute right-0 top-4 hidden h-32 w-auto rotate-90 opacity-30 sm:block"
+            className="pointer-events-none absolute right-0 top-2 hidden h-28 w-auto rotate-90 opacity-30 sm:block"
           />
           <p className="font-mono text-xs uppercase text-accent">
             {project.year} · {project.role}
           </p>
-          <h1 className="mt-4 max-w-4xl font-display text-4xl font-semibold leading-tight sm:text-6xl">
+          <h1 className="mt-3 max-w-4xl font-display text-4xl font-semibold leading-tight sm:text-5xl">
             {project.title}
           </h1>
-          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-3 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
             {project.kicker}
           </p>
         </header>
@@ -97,47 +97,40 @@ function ProjectDetail() {
           ))}
         </div>
 
-        <section className="grid gap-8 border-b border-border py-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
+        <section className="grid gap-6 border-b border-border py-8 lg:grid-cols-[1fr_1.6fr] lg:gap-12">
           <div>
             <CaseStudyLabel>Tech Stack</CaseStudyLabel>
-            <p className="mt-4 text-sm leading-7 text-foreground/85">
+            <p className="mt-3 text-sm leading-6 text-foreground/85">
               {project.stack.join(" • ")}
             </p>
           </div>
           <div>
             <CaseStudyLabel>Overview</CaseStudyLabel>
-            <p className="mt-4 text-base leading-7 text-foreground/85">{overview}</p>
+            <p className="mt-3 text-base leading-6 text-foreground/85">{overview}</p>
           </div>
         </section>
 
-        <section className="grid gap-10 border-b border-border py-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+        <section className="grid gap-6 border-b border-border py-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-12">
           <div>
             <CaseStudyLabel>Objective</CaseStudyLabel>
-            <p className="mt-6 text-base leading-7 text-foreground/85">
+            <p className="mt-3 text-base leading-6 text-foreground/85">
               {project.sections.objective ?? project.kicker}
             </p>
           </div>
 
           <div>
             <CaseStudyLabel>Challenges &amp; Solutions</CaseStudyLabel>
-            <div className="mt-6 divide-y divide-border border-y border-border">
+            <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {project.sections.pairs?.map((pair, index) => (
                 <div
                   key={`${pair.challenge}-${index}`}
-                  className="grid gap-4 py-6 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] sm:gap-6"
+                  className="rounded-lg border border-border bg-surface/50 p-3"
                 >
-                  <div className="min-w-0">
-                    <p className="font-mono text-[11px] uppercase text-accent">Challenge 0{index + 1}</p>
-                    <p className="mt-2 text-sm leading-7 text-foreground/85">{pair.challenge}</p>
-                  </div>
-                  <span className="self-center text-accent" aria-hidden>
-                    <span className="hidden sm:inline">→</span>
-                    <span className="sm:hidden">↓</span>
-                  </span>
-                  <div className="min-w-0">
-                    <p className="font-mono text-[11px] uppercase text-accent">Solution</p>
-                    <p className="mt-2 text-sm leading-7 text-foreground/85">{pair.solution}</p>
-                  </div>
+                  <p className="font-mono text-[10px] uppercase text-accent">0{index + 1}</p>
+                  <p className="mt-1 text-sm leading-5 text-foreground/85">{pair.challenge}</p>
+                  <div className="my-2 h-px bg-border" aria-hidden />
+                  <p className="font-mono text-[10px] uppercase text-accent">Solution</p>
+                  <p className="mt-1 text-sm leading-5 text-foreground/85">{pair.solution}</p>
                 </div>
               ))}
             </div>
