@@ -180,7 +180,6 @@ export const projects: Project[] = [
         },
         {
           title: "Special Implementations to Game Logic",
-          wide: true,
           paragraphs: [
             "There are a few special rules implemented into this game to increase logic complexity. A roll of 6 is automatically added to the player's running score, the player loses after 9 rolls, the player loses if their score exceeds 23, and the player automatically wins if they apply a hidden hardware shortcut.",
             "When a player rolls a 6, they bypass the state where the user chooses to add their roll to their accumulated sum and enter the state after, where the number has been summed with their score, and they are prompted to roll again. There is a counter and display for both the number of turns and the accumulated score that the player is on. Similar to the roll, when a player loses by turns or by score, they enter the loss state immediately through combinational logic driven by the control.",
