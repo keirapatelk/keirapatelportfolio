@@ -123,7 +123,7 @@ export const projects: Project[] = [
     slug: "fpga-playground",
     title: "FPGA Dice Game",
     kicker: "Learning digital design by building it in Verilog.",
-    year: "2024",
+    year: "2026",
     role: "Digital Logic / FPGA Design",
     stack: [
       "Intel DE10-Lite",
