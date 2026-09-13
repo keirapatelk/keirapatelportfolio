@@ -365,8 +365,9 @@ details: [
     image: musicImg,
     imageAlt: "Handheld music player with a round dial on pale blue paper.",
     images: [
-      { src: musicImg, alt: "Handheld music player with a round dial on pale blue paper." },
       { src: musicDetailImg, alt: "Exploded view of the music player showing the internal electronics." },
+      { src: musicSquareOneImg, alt: "Handheld music player with a round dial on pale blue paper." },
+      { src: musicSquareTwoImg, alt: "Music player case and internal PCB with volume knob." },
     ],
   },
   {
