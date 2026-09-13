@@ -137,7 +137,7 @@ function ProjectDetail() {
           </div>
         </section>
 
-        <div className="grid gap-4 py-10 sm:grid-cols-2 sm:py-14">
+        <div className="grid gap-4 py-8 sm:grid-cols-2 sm:py-10">
           {supportingImages.map((image, index) => (
             <ProjectFigure
               key={`${image.src}-support-${index}`}
@@ -151,9 +151,9 @@ function ProjectDetail() {
         {isPager ? (
           <PagerDetails />
         ) : (
-          <section className="border-y border-border py-12">
+          <section className="border-y border-border py-8">
             <CaseStudyLabel>Results</CaseStudyLabel>
-            <p className="mt-5 max-w-3xl text-base leading-7 text-foreground/85">
+            <p className="mt-3 max-w-3xl text-base leading-6 text-foreground/85">
               {project.sections.results}
             </p>
           </section>
