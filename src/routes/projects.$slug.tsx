@@ -24,7 +24,7 @@ export const Route = createFileRoute("/projects/$slug")({
     }
 
     const { project } = loaderData;
-    const description = project.summary.trim() || project.kicker;
+    const description = project.summary.trim();
     return {
       meta: [
         { title: `${project.title} — Keira Patel` },
@@ -78,9 +78,6 @@ function ProjectDetail() {
           <h1 className="mt-3 max-w-4xl font-display text-4xl font-semibold leading-tight sm:text-5xl">
             {project.title}
           </h1>
-          <p className="mt-3 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            {project.kicker}
-          </p>
         </header>
 
         <div className={hasSplitHeader ? "grid gap-4 sm:grid-cols-2" : "grid"}>
@@ -138,44 +135,33 @@ function ProjectDetail() {
           ))}
         </div>
 
-        <div className="border-y border-border py-8">
-          {project.sections.details && project.sections.details.length > 0 && (
-            <section className="grid gap-x-10 gap-y-8 md:grid-cols-2">
-              {project.sections.details.map((detail) => (
-                <CaseStudySection key={detail.title} title={detail.title}>
-                  {detail.paragraphs.map((paragraph) => (
-                    <p key={paragraph} className="text-sm leading-6 text-foreground/85">
-                      {paragraph}
-                    </p>
-                  ))}
-                </CaseStudySection>
-              ))}
-            </section>
-          )}
+        {(project.sections.details?.length ?? 0) > 0 || isPager ? (
+          <div className="border-y border-border py-8">
+            {project.sections.details && project.sections.details.length > 0 && (
+              <section className="grid gap-x-10 gap-y-8 md:grid-cols-2">
+                {project.sections.details.map((detail) => (
+                  <CaseStudySection key={detail.title} title={detail.title}>
+                    {detail.paragraphs.map((paragraph) => (
+                      <p key={paragraph} className="text-sm leading-6 text-foreground/85">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </CaseStudySection>
+                ))}
+              </section>
+            )}
 
-          {isPager ? (
-            <PagerDetails
-              className={
-                project.sections.details && project.sections.details.length > 0
-                  ? "border-t border-border pt-8"
-                  : undefined
-              }
-            />
-          ) : (
-            <section
-              className={
-                project.sections.details && project.sections.details.length > 0
-                  ? "border-t border-border pt-8"
-                  : undefined
-              }
-            >
-              <CaseStudyLabel>Results</CaseStudyLabel>
-              <p className="mt-3 max-w-3xl text-base leading-6 text-foreground/85">
-                {project.sections.results}
-              </p>
-            </section>
-          )}
-        </div>
+            {isPager && (
+              <PagerDetails
+                className={
+                  project.sections.details && project.sections.details.length > 0
+                    ? "border-t border-border pt-8"
+                    : undefined
+                }
+              />
+            )}
+          </div>
+        ) : null}
 
 
         <section className="py-8">
