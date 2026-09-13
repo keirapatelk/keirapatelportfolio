@@ -141,7 +141,11 @@ function ProjectDetail() {
             {project.sections.details && project.sections.details.length > 0 && (
               <section className="grid gap-x-10 gap-y-8 md:grid-cols-2">
                 {project.sections.details.map((detail) => (
-                  <CaseStudySection key={detail.title} title={detail.title}>
+                  <CaseStudySection
+                    key={detail.title}
+                    title={detail.title}
+                    className={detail.wide ? "md:col-span-2" : undefined}
+                  >
                     {detail.paragraphs.map((paragraph) => (
                       <p key={paragraph} className="text-sm leading-6 text-foreground/85">
                         {paragraph}
