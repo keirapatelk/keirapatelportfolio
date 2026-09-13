@@ -83,9 +83,6 @@ function ProjectGrid({ items }: { items: Project[] }) {
               <h3 className="mt-3 font-display text-xl font-semibold tracking-tight">
                 {p.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {p.summary}
-              </p>
               <div className="mt-4 flex flex-wrap gap-1.5">
                 {p.stack.map((s) => (
                   <span
