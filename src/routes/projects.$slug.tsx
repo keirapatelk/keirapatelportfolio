@@ -6,7 +6,6 @@ import {
   projects,
   type Project,
 } from "@/lib/projects";
-import circuitBranch from "@/assets/circuit-branch.png.asset.json";
 
 export const Route = createFileRoute("/projects/$slug")({
   loader: ({ params }) => {
