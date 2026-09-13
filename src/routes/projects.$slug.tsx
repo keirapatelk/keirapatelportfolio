@@ -232,9 +232,17 @@ function CaseStudyLabel({ children }: { children: React.ReactNode }) {
   return <h2 className="font-display text-lg font-semibold sm:text-xl">{children}</h2>;
 }
 
-function CaseStudySection({ title, children }: { title: string; children: React.ReactNode }) {
+function CaseStudySection({
+  title,
+  className,
+  children,
+}: {
+  title: string;
+  className?: string;
+  children: React.ReactNode;
+}) {
   return (
-    <div>
+    <div className={className}>
       <CaseStudyLabel>{title}</CaseStudyLabel>
       <div className="mt-3 space-y-2 text-sm leading-6 text-foreground/85">{children}</div>
     </div>
