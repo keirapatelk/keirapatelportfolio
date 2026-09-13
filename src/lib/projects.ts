@@ -155,7 +155,7 @@ export const projects: Project[] = [
           challenge:
             "All combinational logic must be compressed to its simplest form using Karnaugh maps.",
           solution:
-            "Reduced every combinational block with Karnaugh maps before converting it to gate-level logic, keeping the design clean and reliable.",
+            "Reduced every combinational block with Karnaugh maps before converting it to gate-level logic.",
         },
       ],
       details: [
