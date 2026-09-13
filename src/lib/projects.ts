@@ -6,6 +6,8 @@ import fpgaDetailImg from "@/assets/fpgaQuartus.png";
 import fpgaWideAsset from "@/assets/fpga-wide.png.asset.json";
 import musicImg from "@/assets/musicPlayer.jpg";
 import musicDetailImg from "@/assets/project-music-player-detail.jpg";
+import musicSquareOneImg from "@/assets/project-music.jpg";
+import musicSquareTwoImg from "@/assets/project-music-detail.jpg";
 import mammotenImg from "@/assets/mammoTENWebsite.png";
 import mammotenDetailImg from "@/assets/project-mammoten-detail.jpg";
 import waterPoloImg from "@/assets/project-water-polo.jpg";
