@@ -1,4 +1,6 @@
 import pagerImg from "@/assets/bluetoothPagerPhoto.jpg";
+import pagerBoardImg from "@/assets/project-pager.jpg";
+import pagerDetailImg from "@/assets/project-pager-detail.jpg";
 import fpgaImg from "@/assets/fpgaDiceGame.png";
 import fpgaDetailImg from "@/assets/fpgaQuartus.png";
 import musicImg from "@/assets/musicPlayer.jpg";
@@ -42,6 +44,37 @@ export type Project = {
   images: { src: string; alt: string }[];
 };
 
+export const bluetoothPagerCaseStudy = {
+  overview:
+    "I fully designed and built a compact wireless pager system consisting of two custom PCBs: a transmitter and a receiver. The system sends one of three predefined messages wirelessly over Bluetooth Low Energy, through walls and across a household.",
+  constraints: [
+    "Low power consumption",
+    "Reliable communication across a household",
+    "Successful acknowledgement protocol",
+  ],
+  ackArchitecture: [
+    "I implemented a two-way acknowledgement system so the transmitter can indicate that an alert reached and was processed by the receiver. After receiving and displaying the alert, the receiver automatically sends an ACK back. The transmitter then activates its ACK LED, confirming that the message was successfully displayed.",
+    "Each PCB also includes a dedicated connection-status LED. It illuminates once the transmitter and receiver establish a BLE connection, allowing the user to verify that both devices are ready before sending an alert.",
+  ],
+  powerOptimization:
+    "Because the transmitter is mounted outside a doorway, it is battery-powered while the receiver uses continuous power. I implemented ESP32 sleep functionality and Bluetooth Low Energy to reduce idle consumption between messages.",
+  customPcb:
+    "Both devices were designed as custom two-layer PCBs rather than assembled from development boards. I used Altium Designer to lay out both boards and create the required component footprints. One unusual battery module required a custom schematic symbol, footprint, and pin layout for the transmitter PCB.",
+  interaction:
+    "The transmitter uses three physical buttons, each mapped to a predefined alert. The receiver displays incoming messages on a 1602A LCD and includes two potentiometers for backlight brightness and text contrast, keeping the display readable in different lighting conditions with an entirely hardware-controlled interface.",
+  learned: [
+    "This project required me to work across the boundary between hardware and firmware rather than treating them as separate systems.",
+    "The most important lesson was that wireless communication is not simply a matter of sending data. A useful embedded system must communicate its own state: whether devices are connected, whether a message was received, and whether the system is operating reliably.",
+    "I also gained experience taking a system from individual components and firmware to a custom PCB implementation, including footprint creation, board layout, wireless considerations, power management, and system-level debugging.",
+  ],
+  images: [
+    { src: pagerImg, alt: "Bluetooth pager transmitter and receiver hardware." },
+    { src: pagerBoardImg, alt: "Custom Bluetooth pager PCB and components." },
+    { src: pagerDetailImg, alt: "Detailed view of the pager electronics." },
+    { src: pagerImg, alt: "Completed Bluetooth pager system." },
+  ],
+};
+
 export const projects: Project[] = [
   {
     slug: "bluetooth-pager",
@@ -49,7 +82,14 @@ export const projects: Project[] = [
     kicker: "Mid-range, multilevel household message system made with ESP32.",
     year: "2025",
     role: "Hardware & firmware",
-    stack: ["ESP32", "SPI", "C++", "Altium Designer", "Arduino IDE"],
+    stack: [
+      "ESP32",
+      "C++",
+      "Altium Designer",
+      "SPI",
+      "Bluetooth Low Energy (BLE)",
+      "2-layer custom PCBs and components",
+    ],
     summary: " ",
     sections: {
       objective:
