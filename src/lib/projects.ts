@@ -214,9 +214,12 @@ export const projects: Project[] = [
         "The robot successfully tracked a sound source in real time, ignored out-of-band noise, and handled 180° turn decisions based on amplitude differences between the two microphones.",
       details: [
         {
-          title: "Analog Front-End & Circuit Validation",
+          title: "Motor Control & Turn Logic",
           paragraphs: [
-            "To make the raw microphone signal readable, I designed a preamplifier circuit to boost the AC signal. Correct resistor and capacitor values were validated in LTspice using circuit building and simulation software to ensure the circuit was behaving correctly. In this circuit, a coupling capacitor is used to pass AC and block DC signals to the op-amp. The op-amp and the resistor circuitry around it then amplify the signal into readable data, ready for digital signal processing.",
+            "Each motor's direction is controlled through an external H-bridge driver, with GPIO pin pairs setting which way current flows through each motor to determine wheel direction. Speed is controlled independently through PWM, using Timer_A compare registers to set the duty cycle delivered to each wheel.",
+            "During normal tracking, the robot performs gradual turns by running both motors forward but at different duty cycles to make one wheel faster than the other. For a full 180° rotation, the robot instead spins around by reversing one motor's direction pins while driving both wheels at equal speed.",
+            "The motor control decision-making is determined by the amplitude difference between the right and left side microphones. A strong signal from the left microphone prompts the motors to execute a left-side turn, and vice versa. If there is a significant volume drop across both microphones, the microcontroller assumes the audio source has been moved behind the robot and rotates 180°.",
+            "I noticed a microphone sensitivity difference between the left and right side microphones and created a “MIC_CALIBRATION” variable to scale the different sides to the same intensity and ensure the robot could accurately determine the location of the sound source.",
           ],
         },
         {
@@ -228,12 +231,9 @@ export const projects: Project[] = [
           ],
         },
         {
-          title: "Motor Control & Turn Logic",
+          title: "Analog Front-End & Circuit Validation",
           paragraphs: [
-            "Each motor's direction is controlled through an external H-bridge driver, with GPIO pin pairs setting which way current flows through each motor to determine wheel direction. Speed is controlled independently through PWM, using Timer_A compare registers to set the duty cycle delivered to each wheel.",
-            "During normal tracking, the robot performs gradual turns by running both motors forward but at different duty cycles to make one wheel faster than the other. For a full 180° rotation, the robot instead spins around by reversing one motor's direction pins while driving both wheels at equal speed.",
-            "The motor control decision-making is determined by the amplitude difference between the right and left side microphones. A strong signal from the left microphone prompts the motors to execute a left-side turn, and vice versa. If there is a significant volume drop across both microphones, the microcontroller assumes the audio source has been moved behind the robot and rotates 180°.",
-            "I noticed a microphone sensitivity difference between the left and right side microphones and created a “MIC_CALIBRATION” variable to scale the different sides to the same intensity and ensure the robot could accurately determine the location of the sound source.",
+            "To make the raw microphone signal readable, I designed a preamplifier circuit to boost the AC signal. Correct resistor and capacitor values were validated in LTspice using circuit building and simulation software to ensure the circuit was behaving correctly. In this circuit, a coupling capacitor is used to pass AC and block DC signals to the op-amp. The op-amp and the resistor circuitry around it then amplify the signal into readable data, ready for digital signal processing.",
           ],
         },
         {
