@@ -1,5 +1,6 @@
 import { Link, Outlet } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import { pageVisibility } from "@/lib/site-config";
 
 export function SiteLayout({ children }: { children?: ReactNode }) {
   return (
