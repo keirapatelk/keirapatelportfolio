@@ -42,8 +42,9 @@ export const Route = createFileRoute("/projects/$slug")({
 
 function ProjectDetail() {
   const { project } = Route.useLoaderData() as { project: Project };
-  const projectIndex = projects.findIndex((item) => item.slug === project.slug);
-  const nextProject = projects[(projectIndex + 1) % projects.length];
+  const list = projects.filter((item) => item.visible !== false);
+  const projectIndex = list.findIndex((item) => item.slug === project.slug);
+  const nextProject = list[(projectIndex + 1) % list.length];
   const isPager = project.slug === "bluetooth-pager";
   const availableImages = isPager ? bluetoothPagerCaseStudy.images.slice(0, 3) : project.images;
   const hasSplitHeader = !isPager && availableImages.length > 1;
