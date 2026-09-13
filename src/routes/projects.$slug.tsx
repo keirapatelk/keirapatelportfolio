@@ -153,13 +153,7 @@ function ProjectDetail() {
           </section>
         )}
 
-        <section className="relative py-8">
-          <img
-            src={circuitBranch.url}
-            alt=""
-            aria-hidden
-            className="pointer-events-none absolute bottom-3 right-2 hidden h-20 w-auto rotate-90 opacity-20 sm:block"
-          />
+        <section className="py-8">
           <p className="font-mono text-xs uppercase text-muted-foreground">Next project</p>
           <Link
             to="/projects/$slug"
