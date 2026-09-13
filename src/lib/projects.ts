@@ -302,7 +302,6 @@ details: [
       "Altium Designer",
       "SPI",
       "I2S",
-      "I2C",
       "Mealy State Machine (FSM)",
       "2 Layer Custom PCBs and Components",
       "Hardware Interrupts",
