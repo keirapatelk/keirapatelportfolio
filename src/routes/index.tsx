@@ -173,9 +173,6 @@ function HomeProjectGrid({ items }: { items: Project[] }) {
               <h3 className="mt-2 font-display text-lg font-semibold tracking-tight">
                 {p.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {p.summary}
-              </p>
             </div>
           </Link>
         </li>
