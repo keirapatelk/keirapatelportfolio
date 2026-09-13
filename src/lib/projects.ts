@@ -29,7 +29,6 @@ export type ChallengeSolution = { challenge: string; solution: string };
 export type ProjectSections = {
   overview?: string;
   pairs?: ChallengeSolution[];
-  results?: string;
   details?: { title: string; paragraphs: string[] }[];
 };
 
@@ -121,9 +120,7 @@ export const projects: Project[] = [
             "Built a two-way ACK system: the receiver sends an ACK back after displaying the message, and the transmitter lights an ACK LED. A separate connection-status LED on each board confirms the BLE link is ready.",
         },
       ],
-      results:
-        "A working household pager pair with custom two-layer PCBs, hardware-controlled LCD contrast and brightness, and clear visual feedback for connection, transmission, and acknowledgement.",
-    },
+},
     image: pagerImg,
     imageAlt: "Custom Bluetooth pager PCB on light blue linen.",
     images: [
@@ -159,9 +156,7 @@ export const projects: Project[] = [
             "Wrote self-checking testbenches for every module so simulation catches bugs before flashing the board.",
         },
       ],
-      results:
-        "A playable dice game running on the DE10-Lite with LED and 7-segment output, and a reusable testbench pattern I now reach for on every RTL project.",
-    },
+},
     image: fpgaImg,
     imageAlt: "FPGA development board glowing with blue LEDs.",
     images: [
@@ -176,8 +171,8 @@ export const projects: Project[] = [
     slug: "sound-following-robot",
     title: "Sound Following Robot",
     kicker: "A two-microphone robot that turns and drives toward a sound source.",
-    year: "2024",
-    role: "Embedded systems",
+    year: "2026",
+    role: "Embedded Systems / Signal Processing",
     stack: [
       "TI MSP432 ARM Cortex-M4",
       "C",
@@ -210,9 +205,7 @@ export const projects: Project[] = [
             "Created a MIC_CALIBRATION variable to scale the left and right microphone amplitudes so the microcontroller could reliably determine the sound source direction.",
         },
       ],
-      results:
-        "The robot successfully tracked a sound source in real time, ignored out-of-band noise, and handled 180° turn decisions based on amplitude differences between the two microphones.",
-      details: [
+details: [
         {
           title: "Motor Control & Turn Logic",
           paragraphs: [
@@ -311,9 +304,7 @@ export const projects: Project[] = [
             "Let the copy breathe with generous whitespace and cut anything that didn't earn its line.",
         },
       ],
-      results:
-        "A live marketing page shipped in one sprint that still reads clean today.",
-    },
+},
     image: mammotenImg,
     imageAlt: "Mammoten website preview.",
     images: [
@@ -342,9 +333,7 @@ export const projects: Project[] = [
             "Aggregated events into a coach-facing dashboard with per-player summaries and possession trends.",
         },
       ],
-      results:
-        "A working tracker used at practice with coaches able to pull up quarter-by-quarter stats on the pool deck.",
-    },
+},
     image: waterPoloImg,
     imageAlt: "Water polo analytics dashboard.",
     images: [
@@ -373,9 +362,7 @@ export const projects: Project[] = [
             "Traced sensor and actuator signals on real cars to see textbook waveforms show up in the shop.",
         },
       ],
-      results:
-        "A summer of hands-on diagnostics that permanently changed how I think about the electronics I design.",
-    },
+},
     image: smogImg,
     imageAlt: "Smog testing equipment.",
     images: [
@@ -404,9 +391,7 @@ export const projects: Project[] = [
             "Wrote a scoring heuristic that decides when to bank based on the current lead or deficit.",
         },
       ],
-      results:
-        "A working online PIG game with a UI, network sync, and an opponent that plays a reasonable game.",
-    },
+},
     image: pigGameImg,
     imageAlt: "PIG dice game screenshot.",
     images: [
@@ -435,9 +420,7 @@ export const projects: Project[] = [
             "Added a tactile detent at the locked position so the user feels a clear click when secure.",
         },
       ],
-      results:
-        "A physical prototype refined across several iterations, tested against the original interview criteria.",
-    },
+},
     image: wheelchairImg,
     imageAlt: "Wheelchair restraint prototype.",
     images: [
@@ -466,9 +449,7 @@ export const projects: Project[] = [
             "Matched fillets and chamfers to the watch case profile so the seam reads as intentional.",
         },
       ],
-      results:
-        "An evening project that quietly makes something I wear every day fit right.",
-    },
+},
     image: watchImg,
     imageAlt: "3D printed watch adapter.",
     images: [
@@ -497,9 +478,7 @@ export const projects: Project[] = [
             "Kept the render path tight and reused buffers instead of allocating per frame.",
         },
       ],
-      results:
-        "A playable two-player Pong on the OLED with responsive controls and consistent frame timing.",
-    },
+},
     image: pingPongImg,
     imageAlt: "Microcontroller Pong game.",
     images: [
@@ -528,9 +507,7 @@ export const projects: Project[] = [
             "Kept navigation minimal and put a straightforward join path one click away from every page.",
         },
       ],
-      results:
-        "A live club site with clear navigation, bold event cards, and a simple membership funnel.",
-    },
+},
     image: ieeeWebsiteImg,
     imageAlt: "IEEE student branch website preview.",
     images: [
