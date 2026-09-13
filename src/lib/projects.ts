@@ -21,20 +21,27 @@ import pingPongImg from "@/assets/pingPongTIMSP.png";
 import pingPongDetailImg from "@/assets/project-ping-pong-detail.jpg";
 import ieeeWebsiteImg from "@/assets/ieeeWebsite.png";
 import ieeeWebsiteDetailImg from "@/assets/ieeeWebsiteDetail.png";
+import portraitPlaceholder from "@/assets/portrait-placeholder.jpg";
+
 
 export type ChallengeSolution = { challenge: string; solution: string };
 
 export type ProjectSections = {
+  overview?: string;
   objective?: string;
   pairs?: ChallengeSolution[];
   results?: string;
+  details?: { title: string; paragraphs: string[] }[];
 };
+
 
 export type Project = {
   /** Set to false to hide this project everywhere (its page returns not found). */
   visible?: boolean;
   /** Set to true to show this project in the "Featured projects" section. */
   featured?: boolean;
+  /** Header gallery layout: one wide image or two square images side by side. */
+  headerMode?: "wide" | "split";
   slug: string;
   title: string;
   kicker: string;
@@ -47,6 +54,7 @@ export type Project = {
   imageAlt: string;
   images: { src: string; alt: string }[];
 };
+
 
 export const bluetoothPagerCaseStudy = {
   overview:
@@ -166,6 +174,93 @@ export const projects: Project[] = [
       { src: fpgaDetailImg, alt: "FPGA board with a waveform display and Verilog code in the background." },
     ],
   },
+  {
+    visible: true,
+    featured: true,
+    headerMode: "split",
+    slug: "sound-following-robot",
+    title: "Sound Following Robot",
+    kicker: "A two-microphone robot that turns and drives toward a sound source.",
+    year: "2024",
+    role: "Embedded systems",
+    stack: [
+      "TI MSP432 ARM Cortex-M4",
+      "C",
+      "ADALM 2000 (USB Oscilloscope)",
+      "Oscilloscope",
+      "Multimeter",
+      "LTspice",
+      "Scopy",
+      "PWM",
+    ],
+    summary:
+      "A sound-following robot built on the TI MSP432 that uses analog and digital filters to locate and drive toward a sound source.",
+    sections: {
+      overview:
+        "In this project, I built a sound following robot that autonomously turns and drives towards a sound source using a two microphone input system. Raw inputs are converted through the analog and digital filters to find and adjust movement towards the sound source’s direction.",
+      objective:
+        "Build a sound-following robot that autonomously turns and drives toward a sound source using a two-microphone input system, real-time filtering, and PWM motor control.",
+      pairs: [
+        {
+          challenge: "Reject frequencies outside of the human vocal frequency range.",
+          solution:
+            "Designed an analog RC filter plus cascaded high-pass and low-pass digital filters in firmware to isolate the vocal passband and ignore external noise such as the robot's own wheels.",
+        },
+        {
+          challenge: "Real-time response using a fixed-rate interrupt-driven control loop.",
+          solution:
+            "Used a hardware handler to trigger ADC sampling at a fixed rate, averaged the samples, and drove each motor through PWM with Timer_A compare registers for smooth tracking turns.",
+        },
+        {
+          challenge: "Accurate directionality despite mismatched microphone sensitivity.",
+          solution:
+            "Created a MIC_CALIBRATION variable to scale the left and right microphone amplitudes so the microcontroller could reliably determine the sound source direction.",
+        },
+      ],
+      results:
+        "The robot successfully tracked a sound source in real time, ignored out-of-band noise, and handled 180° turn decisions based on amplitude differences between the two microphones.",
+      details: [
+        {
+          title: "Analog Front-End & Circuit Validation",
+          paragraphs: [
+            "To make the raw microphone signal readable, I designed a preamplifier circuit to boost the AC signal. Correct resistor and capacitor values were validated in LTspice using circuit building and simulation software to ensure the circuit was behaving correctly. In this circuit, a coupling capacitor is used to pass AC and block DC signals to the op-amp. The op-amp and the resistor circuitry around it then amplify the signal into readable data, ready for digital signal processing.",
+          ],
+        },
+        {
+          title: "Motor Control & Turn Logic",
+          paragraphs: [
+            "Each motor's direction is controlled through an external H-bridge driver, with GPIO pin pairs setting which way current flows through each motor to determine wheel direction. Speed is controlled independently through PWM, using Timer_A compare registers to set the duty cycle delivered to each wheel.",
+            "During normal tracking, the robot performs gradual turns by running both motors forward but at different duty cycles to make one wheel faster than the other. For a full 180° rotation, the robot instead spins around by reversing one motor's direction pins while driving both wheels at equal speed.",
+            "The motor control decision-making is determined by the amplitude difference between the right and left side microphones. A strong signal from the left microphone prompts the motors to execute a left-side turn, and vice versa. If there is a significant volume drop across both microphones, the microcontroller assumes the audio source has been moved behind the robot and rotates 180°.",
+            "I noticed a microphone sensitivity difference between the left and right side microphones and created a “MIC_CALIBRATION” variable to scale the different sides to the same intensity and ensure the robot could accurately determine the location of the sound source.",
+          ],
+        },
+        {
+          title: "Analog & Digital Filter Design",
+          paragraphs: [
+            "To handle the analog filter, I used a first-order RC circuit with a potentiometer to alter the cutoff frequencies as needed. A simple formula can be used to determine the cutoff frequencies for a given RC circuit, and the resistance across the potentiometer can be found with an oscilloscope. Bode plots were analyzed over the RC circuits to determine that the calculated cutoff frequency was correct by inspecting where the circuit’s power had halved.",
+            "For the digital filtering, I used a hardware handler to trigger ADC sampling. These samples were averaged out, and a single value was cascaded into high-pass and low-pass digital filters in firmware using C programming. I debugged digital cutoff frequencies by analyzing Fast Fourier Transform (FFT) graphs and confirming that frequencies outside the passband were sufficiently attenuated.",
+            "By designing a passband to isolate the human vocal frequency range, the robot was able to ignore external noise, such as the turning of its own wheels, to ensure directional commands were accurate.",
+          ],
+        },
+        {
+          title: "Debugging & Non-Ideal Inductor Resistance",
+          paragraphs: [
+            "While performing Scopy oscilloscope readings, I discovered that the voltage over the inductor never reached the 0V threshold. The inductor’s purpose is to keep current continuous; therefore, it has extreme voltage spikes and should act like a ‘wire’ with 0V at times. After discovering this was not the case, I calculated that this was a non-ideal inductor with internal resistance. I determined the resistance using an oscilloscope, and accounted for it while creating RL circuits.",
+          ],
+        },
+      ],
+    },
+    image: portraitPlaceholder,
+    imageAlt: "Sound following robot prototype.",
+    images: [
+      { src: portraitPlaceholder, alt: "Sound following robot front view." },
+      { src: portraitPlaceholder, alt: "Sound following robot microphone and circuit layout." },
+      { src: portraitPlaceholder, alt: "Sound following robot motor driver wiring." },
+      { src: portraitPlaceholder, alt: "Sound following robot oscilloscope reading." },
+    ],
+  },
+
   {
     slug: "music-player",
     title: "Embedded Audio Player",
