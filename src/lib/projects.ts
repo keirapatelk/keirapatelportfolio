@@ -143,7 +143,7 @@ export const projects: Project[] = [
           challenge:
             "Flip-flops, the dice roller, and other components must be created from scratch using digital logic.",
           solution:
-            "Implemented the game state with one-hot encoded D flip-flops and a custom dice roller built from Karnaugh-mapped 7-segment decode logic.",
+            "Utilized Karnaugh maps to simplify complex logic and created S-R Latches with clocked inputs to form flip flops.",
         },
         {
           challenge:
