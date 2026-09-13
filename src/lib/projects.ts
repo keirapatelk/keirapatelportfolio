@@ -3,6 +3,7 @@ import pagerBoardImg from "@/assets/project-pager.jpg";
 import pagerDetailImg from "@/assets/project-pager-detail.jpg";
 import fpgaImg from "@/assets/fpgaDiceGame.png";
 import fpgaDetailImg from "@/assets/fpgaQuartus.png";
+import fpgaWideAsset from "@/assets/fpga-wide.png.asset.json";
 import musicImg from "@/assets/musicPlayer.jpg";
 import musicDetailImg from "@/assets/project-music-player-detail.jpg";
 import mammotenImg from "@/assets/mammoTENWebsite.png";
