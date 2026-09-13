@@ -29,7 +29,7 @@ export type ChallengeSolution = { challenge: string; solution: string };
 export type ProjectSections = {
   overview?: string;
   pairs?: ChallengeSolution[];
-  details?: { title: string; paragraphs: string[] }[];
+  details?: { title: string; paragraphs: string[]; wide?: boolean }[];
 };
 
 
