@@ -21,20 +21,27 @@ import pingPongImg from "@/assets/pingPongTIMSP.png";
 import pingPongDetailImg from "@/assets/project-ping-pong-detail.jpg";
 import ieeeWebsiteImg from "@/assets/ieeeWebsite.png";
 import ieeeWebsiteDetailImg from "@/assets/ieeeWebsiteDetail.png";
+import portraitPlaceholder from "@/assets/portrait-placeholder.jpg";
+
 
 export type ChallengeSolution = { challenge: string; solution: string };
 
 export type ProjectSections = {
+  overview?: string;
   objective?: string;
   pairs?: ChallengeSolution[];
   results?: string;
+  details?: { title: string; paragraphs: string[] }[];
 };
+
 
 export type Project = {
   /** Set to false to hide this project everywhere (its page returns not found). */
   visible?: boolean;
   /** Set to true to show this project in the "Featured projects" section. */
   featured?: boolean;
+  /** Header gallery layout: one wide image or two square images side by side. */
+  headerMode?: "wide" | "split";
   slug: string;
   title: string;
   kicker: string;
@@ -47,6 +54,7 @@ export type Project = {
   imageAlt: string;
   images: { src: string; alt: string }[];
 };
+
 
 export const bluetoothPagerCaseStudy = {
   overview:
