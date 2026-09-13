@@ -50,10 +50,17 @@ function ProjectDetail() {
   const inferredHeaderMode = project.images.length > 1 ? "split" : "wide";
   const headerMode = isPager ? "wide" : project.headerMode ?? inferredHeaderMode;
   const hasSplitHeader = headerMode === "split";
-  const headerImages = hasSplitHeader ? availableImages.slice(0, 2) : availableImages.slice(0, 1);
-  const supportingImages = hasSplitHeader
-    ? availableImages.slice(2, 4)
-    : availableImages.slice(1, 3);
+  const isStacked = headerMode === "stacked";
+  const headerImages = hasSplitHeader
+    ? availableImages.slice(0, 2)
+    : isStacked
+      ? availableImages.slice(0, 3)
+      : availableImages.slice(0, 1);
+  const supportingImages = isStacked
+    ? []
+    : hasSplitHeader
+      ? availableImages.slice(2, 4)
+      : availableImages.slice(1, 3);
   const overview = isPager
     ? bluetoothPagerCaseStudy.overview
     : project.sections.overview ?? project.summary;
