@@ -41,8 +41,8 @@ export type Project = {
   visible?: boolean;
   /** Set to true to show this project in the "Featured projects" section. */
   featured?: boolean;
-  /** Header gallery layout: one wide image or two square images side by side. */
-  headerMode?: "wide" | "split";
+  /** Header gallery layout: one wide image, two square images side by side, or one wide image with two square images below it. */
+  headerMode?: "wide" | "split" | "stacked";
   slug: string;
   title: string;
   kicker: string;
