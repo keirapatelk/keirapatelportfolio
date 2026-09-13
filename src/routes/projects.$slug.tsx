@@ -94,25 +94,18 @@ function ProjectDetail() {
           ))}
         </div>
 
-        <section className="grid gap-6 border-b border-border py-8 lg:grid-cols-[1fr_1.6fr] lg:gap-12">
-          <div>
-            <CaseStudyLabel>Tech Stack</CaseStudyLabel>
-            <p className="mt-3 text-sm leading-6 text-foreground/85">
-              {project.stack.join(" • ")}
-            </p>
-          </div>
-          <div>
-            <CaseStudyLabel>Overview</CaseStudyLabel>
-            <p className="mt-3 text-base leading-6 text-foreground/85">{overview}</p>
-          </div>
-        </section>
-
         <section className="grid gap-6 border-b border-border py-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-12">
-          <div>
-            <CaseStudyLabel>Objective</CaseStudyLabel>
-            <p className="mt-3 text-base leading-6 text-foreground/85">
-              {project.sections.objective ?? project.kicker}
-            </p>
+          <div className="space-y-6">
+            <div>
+              <CaseStudyLabel>Tech Stack</CaseStudyLabel>
+              <p className="mt-3 text-sm leading-6 text-foreground/85">
+                {project.stack.join(" • ")}
+              </p>
+            </div>
+            <div>
+              <CaseStudyLabel>Overview</CaseStudyLabel>
+              <p className="mt-3 text-base leading-6 text-foreground/85">{overview}</p>
+            </div>
           </div>
 
           <div>
