@@ -6,6 +6,8 @@ import fpgaDetailImg from "@/assets/fpgaQuartus.png";
 import fpgaWideAsset from "@/assets/fpga-wide.png.asset.json";
 import musicImg from "@/assets/musicPlayer.jpg";
 import musicDetailImg from "@/assets/project-music-player-detail.jpg";
+import musicSquareOneImg from "@/assets/project-music.jpg";
+import musicSquareTwoImg from "@/assets/project-music-detail.jpg";
 import mammotenImg from "@/assets/mammoTENWebsite.png";
 import mammotenDetailImg from "@/assets/project-mammoten-detail.jpg";
 import waterPoloImg from "@/assets/project-water-polo.jpg";
@@ -39,8 +41,8 @@ export type Project = {
   visible?: boolean;
   /** Set to true to show this project in the "Featured projects" section. */
   featured?: boolean;
-  /** Header gallery layout: one wide image or two square images side by side. */
-  headerMode?: "wide" | "split";
+  /** Header gallery layout: one wide image, two square images side by side, or one wide image with two square images below it. */
+  headerMode?: "wide" | "split" | "stacked";
   slug: string;
   title: string;
   kicker: string;
@@ -288,6 +290,7 @@ details: [
   {
     visible: true,
     featured: true,
+    headerMode: "stacked",
     slug: "music-player",
     title: "Embedded Audio Player",
     kicker: "Custom MP3 player with playlists, album art, and a beginner-friendly build guide.",
@@ -362,8 +365,9 @@ details: [
     image: musicImg,
     imageAlt: "Handheld music player with a round dial on pale blue paper.",
     images: [
-      { src: musicImg, alt: "Handheld music player with a round dial on pale blue paper." },
       { src: musicDetailImg, alt: "Exploded view of the music player showing the internal electronics." },
+      { src: musicSquareOneImg, alt: "Handheld music player with a round dial on pale blue paper." },
+      { src: musicSquareTwoImg, alt: "Music player case and internal PCB with volume knob." },
     ],
   },
   {

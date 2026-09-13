@@ -50,10 +50,17 @@ function ProjectDetail() {
   const inferredHeaderMode = project.images.length > 1 ? "split" : "wide";
   const headerMode = isPager ? "wide" : project.headerMode ?? inferredHeaderMode;
   const hasSplitHeader = headerMode === "split";
-  const headerImages = hasSplitHeader ? availableImages.slice(0, 2) : availableImages.slice(0, 1);
-  const supportingImages = hasSplitHeader
-    ? availableImages.slice(2, 4)
-    : availableImages.slice(1, 3);
+  const isStacked = headerMode === "stacked";
+  const headerImages = hasSplitHeader
+    ? availableImages.slice(0, 2)
+    : isStacked
+      ? availableImages.slice(0, 3)
+      : availableImages.slice(0, 1);
+  const supportingImages = isStacked
+    ? []
+    : hasSplitHeader
+      ? availableImages.slice(2, 4)
+      : availableImages.slice(1, 3);
   const overview = isPager
     ? bluetoothPagerCaseStudy.overview
     : project.sections.overview ?? project.summary;
@@ -81,16 +88,26 @@ function ProjectDetail() {
           </h1>
         </header>
 
-        <div className={hasSplitHeader ? "grid gap-4 sm:grid-cols-2" : "grid"}>
-          {headerImages.map((image, index) => (
-            <ProjectFigure
-              key={`${image.src}-header-${index}`}
-              image={image}
-              number={index + 1}
-              shape={hasSplitHeader ? "square" : "wide"}
-            />
-          ))}
-        </div>
+        {isStacked ? (
+          <div className="grid gap-4">
+            <ProjectFigure image={headerImages[0]} number={1} shape="wide" />
+            <div className="grid gap-4 sm:grid-cols-2">
+              <ProjectFigure image={headerImages[1]} number={2} shape="square" />
+              <ProjectFigure image={headerImages[2]} number={3} shape="square" />
+            </div>
+          </div>
+        ) : (
+          <div className={hasSplitHeader ? "grid gap-4 sm:grid-cols-2" : "grid"}>
+            {headerImages.map((image, index) => (
+              <ProjectFigure
+                key={`${image.src}-header-${index}`}
+                image={image}
+                number={index + 1}
+                shape={hasSplitHeader ? "square" : "wide"}
+              />
+            ))}
+          </div>
+        )}
 
         <section className="grid gap-6 border-b border-border py-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-12">
           <div className="space-y-6">
