@@ -57,10 +57,22 @@ export type Project = {
 export const bluetoothPagerCaseStudy = {
   overview:
     "In this project, I fully designed and built a compact wireless pager system consisting of two custom PCBs: a transmitter and a receiver. The system allows a user to send one of three predefined messages wirelessly over BLE through walls and across a household.",
-  constraints: [
-    "low power consumption",
-    "reliable communication across a household and through walls",
-    "successful acknowledgement protocol between transmitter and receiver",
+  pairs: [
+    {
+      challenge: "Low power consumption for the wall-mounted transmitter.",
+      solution:
+        "Used Bluetooth Low Energy and ESP32 sleep functionality to reduce energy use between messages.",
+    },
+    {
+      challenge: "Reliable communication across a household and through walls.",
+      solution:
+        "Built the system around a stable BLE connection and added dedicated connection-status LEDs so users can confirm both devices are ready before sending an alert.",
+    },
+    {
+      challenge: "A successful acknowledgement protocol between transmitter and receiver.",
+      solution:
+        "Implemented a two-way ACK system that confirms each alert was received and processed, with an ACK LED on both devices for immediate feedback.",
+    },
   ],
   ackArchitecture: [
     "I implemented a two-way acknowledgment system so the transmitter can indicate that an alert reached and was processed by the receiver. After receiving and displaying the alert sent by the transmitter, the receiver automatically sends an ACK back and activates its ACK LED. Upon receiving the ACK from the receiver, the transmitter then activates its ACK LED. The devices automatically acknowledge each other to let both users know they are communicating successfully.",
@@ -87,7 +99,7 @@ export const projects: Project[] = [
     title: "PCB Bluetooth Pager",
     kicker: "Mid-range, multilevel household message system made with ESP32.",
     year: "2025",
-    role: "Hardware & firmware",
+    role: "Hardware & Firmware / PCB Design",
     stack: [
       "ESP32",
       "C++",
