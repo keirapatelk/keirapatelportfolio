@@ -141,7 +141,11 @@ function ProjectDetail() {
             {project.sections.details && project.sections.details.length > 0 && (
               <section className="grid gap-x-10 gap-y-8 md:grid-cols-2">
                 {project.sections.details.map((detail) => (
-                  <CaseStudySection key={detail.title} title={detail.title}>
+                  <CaseStudySection
+                    key={detail.title}
+                    title={detail.title}
+                    className={detail.wide ? "md:col-span-2" : undefined}
+                  >
                     {detail.paragraphs.map((paragraph) => (
                       <p key={paragraph} className="text-sm leading-6 text-foreground/85">
                         {paragraph}
@@ -228,9 +232,17 @@ function CaseStudyLabel({ children }: { children: React.ReactNode }) {
   return <h2 className="font-display text-lg font-semibold sm:text-xl">{children}</h2>;
 }
 
-function CaseStudySection({ title, children }: { title: string; children: React.ReactNode }) {
+function CaseStudySection({
+  title,
+  className,
+  children,
+}: {
+  title: string;
+  className?: string;
+  children: React.ReactNode;
+}) {
   return (
-    <div>
+    <div className={className}>
       <CaseStudyLabel>{title}</CaseStudyLabel>
       <div className="mt-3 space-y-2 text-sm leading-6 text-foreground/85">{children}</div>
     </div>

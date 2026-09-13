@@ -29,7 +29,7 @@ export type ChallengeSolution = { challenge: string; solution: string };
 export type ProjectSections = {
   overview?: string;
   pairs?: ChallengeSolution[];
-  details?: { title: string; paragraphs: string[] }[];
+  details?: { title: string; paragraphs: string[]; wide?: boolean }[];
 };
 
 
@@ -124,28 +124,71 @@ export const projects: Project[] = [
     title: "FPGA Dice Game",
     kicker: "Learning digital design by building it in Verilog.",
     year: "2024",
-    role: "RTL & verification",
-    stack: ["Quartus Prime", "Intel DE10-Lite", "Mealy FSM", "Karnaugh Maps", "Digital Logic"],
-    summary: "Rolling set of FPGA experiments — UART, FIR filters, and more.",
+    role: "Digital Logic / FPGA Design",
+    stack: [
+      "Intel DE10-Lite",
+      "Quartus Prime",
+      "D Flip-Flops",
+      "Logic Gates",
+      "Karnaugh Maps",
+      "Mealy FSM",
+      "Digital Logic",
+    ],
+    summary: "A dice game simulator built from scratch on an FPGA using digital logic.",
     sections: {
+      overview:
+        "In this project, I designed and built a dice game simulator with logic gates where players try to accumulate a score of exactly 23 based on simulated dice rolls. Special cases and clocked inputs increase the logic complexity and game complexity.",
       pairs: [
         {
-          challenge: "Translating game rules into clean synchronous logic.",
+          challenge:
+            "Flip-flops, the dice roller, and other components must be created from scratch using digital logic.",
           solution:
-            "Modeled gameplay as a Mealy FSM with clearly separated state, next-state, and output logic.",
+            "Implemented the game state with one-hot encoded D flip-flops and a custom dice roller built from Karnaugh-mapped 7-segment decode logic.",
         },
         {
-          challenge: "Debouncing physical buttons without adding jitter.",
+          challenge:
+            "Switches must be debounced using the 50MHz clock and logic inside of Quartus.",
           solution:
-            "Added a small synchronizer and debounce counter so a single press produces a single clean event.",
+            "Built clocked debouncers with D flip-flops that store previous switch states and only register a change after it has held steady for several clock cycles.",
         },
         {
-          challenge: "Catching regressions when tweaking modules.",
+          challenge:
+            "All combinational logic must be compressed to its simplest form using Karnaugh maps.",
           solution:
-            "Wrote self-checking testbenches for every module so simulation catches bugs before flashing the board.",
+            "Reduced every combinational block with Karnaugh maps before converting it to gate-level logic, keeping the design clean and reliable.",
         },
       ],
-},
+      details: [
+        {
+          title: "System Architecture",
+          paragraphs: [
+            "The game runs off of a Mealy Finite State Machine with 7 states. In normal gameplay, as players roll and accumulate points, they pass through most of the states. There are 7 D Flip-Flops as the state is set through one-hot encoding. Combinational logic feeding each flip-flop's input determines the next state based on the current state and inputs.",
+            "To assist with debugging, on-board LEDs are used to indicate the state of the machine. This made it easy to verify state transitions during both simulation and hardware bring-up.",
+          ],
+        },
+        {
+          title: "Switch Debouncing & Debugging",
+          paragraphs: [
+            "The on-board switches were not debounced and would oscillate many times between the values 0 and 1 when flipped. This was discovered after analyzing faulty gameplay footage and finding that dice rolls were being added multiple times to the running sum since switches were firing multiple times on each individual flick. Clocked debouncers were added using digital logic and D Flip-Flops to fix this by storing the state of previous switch states and ensuring they had changed for a minimum period of time.",
+          ],
+        },
+        {
+          title: "Dice Roller",
+          paragraphs: [
+            "The 7-segment HEX display is driven by an IC 7447 that decodes a binary number into 7 segments that can be used to drive the display. To correctly display the numbers 1 - 6 to simulate dice rolls, Karnaugh maps are used to simplify digital logic and produce a working display from binary numbers. This dice roller cycles through a preset order of numbers driven by the clock as the roll button is pressed. This simulates randomness as the clock is moving so fast that the user is unable to control the roll output.",
+          ],
+        },
+        {
+          title: "Special Implementations to Game Logic",
+          wide: true,
+          paragraphs: [
+            "There are a few special rules implemented into this game to increase logic complexity. A roll of 6 is automatically added to the player's running score, the player loses after 9 rolls, the player loses if their score exceeds 23, and the player automatically wins if they apply a hidden hardware shortcut.",
+            "When a player rolls a 6, they bypass the state where the user chooses to add their roll to their accumulated sum and enter the state after, where the number has been summed with their score, and they are prompted to roll again. There is a counter and display for both the number of turns and the accumulated score that the player is on. Similar to the roll, when a player loses by turns or by score, they enter the loss state immediately through combinational logic driven by the control.",
+            "One of the interesting features of this game is a hardware hack. Users can write the number 23 in binary using on-board switches, with 1 being the upward position and 0 being the downward position to win. When the switches are correctly aligned, the number 23 is automatically loaded internally so that the next roll will immediately show that the player has won with a score of 23.",
+          ],
+        },
+      ],
+    },
     image: fpgaImg,
     imageAlt: "FPGA development board glowing with blue LEDs.",
     images: [
