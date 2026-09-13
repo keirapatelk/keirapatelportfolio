@@ -136,6 +136,16 @@ function ProjectDetail() {
           ))}
         </div>
 
+        {project.wideImage && (
+          <div className="pb-8 sm:pb-10">
+            <ProjectFigure
+              image={project.wideImage}
+              number={headerImages.length + supportingImages.length + 1}
+              shape="wide"
+            />
+          </div>
+        )}
+
         {(project.sections.details?.length ?? 0) > 0 || isPager ? (
           <div className="border-y border-border py-8">
             {project.sections.details && project.sections.details.length > 0 && (
