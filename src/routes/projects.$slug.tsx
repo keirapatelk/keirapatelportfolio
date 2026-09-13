@@ -106,21 +106,34 @@ function ProjectDetail() {
           </div>
 
           <div>
-            <CaseStudyLabel>Challenges &amp; Solutions</CaseStudyLabel>
-            <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {project.sections.pairs?.map((pair, index) => (
-                <div
-                  key={`${pair.challenge}-${index}`}
-                  className="rounded-lg border border-border bg-surface/50 p-3"
-                >
-                  <p className="font-mono text-[10px] uppercase text-accent">0{index + 1}</p>
-                  <p className="mt-1 text-sm leading-5 text-foreground/85">{pair.challenge}</p>
-                  <div className="my-2 h-px bg-border" aria-hidden />
-                  <p className="font-mono text-[10px] uppercase text-accent">Solution</p>
-                  <p className="mt-1 text-sm leading-5 text-foreground/85">{pair.solution}</p>
+            {isPager ? (
+              <>
+                <CaseStudyLabel>Design Constraints &amp; Specifications</CaseStudyLabel>
+                <ul className="mt-3 list-disc space-y-1 pl-4 text-sm leading-6 text-foreground/85">
+                  {bluetoothPagerCaseStudy.constraints.map((constraint) => (
+                    <li key={constraint}>{constraint}</li>
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <>
+                <CaseStudyLabel>Challenges &amp; Solutions</CaseStudyLabel>
+                <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {project.sections.pairs?.map((pair, index) => (
+                    <div
+                      key={`${pair.challenge}-${index}`}
+                      className="rounded-lg border border-border bg-surface/50 p-3"
+                    >
+                      <p className="font-mono text-[10px] uppercase text-accent">0{index + 1}</p>
+                      <p className="mt-1 text-sm leading-5 text-foreground/85">{pair.challenge}</p>
+                      <div className="my-2 h-px bg-border" aria-hidden />
+                      <p className="font-mono text-[10px] uppercase text-accent">Solution</p>
+                      <p className="mt-1 text-sm leading-5 text-foreground/85">{pair.solution}</p>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </>
+            )}
           </div>
         </section>
 
@@ -213,14 +226,11 @@ function PagerDetails({ className }: { className?: string }) {
       <CaseStudySection title="Power Optimization">{study.powerOptimization}</CaseStudySection>
       <CaseStudySection title="Custom PCB Design">{study.customPcb}</CaseStudySection>
       <CaseStudySection title="User Interface & Interaction">{study.interaction}</CaseStudySection>
-      <div>
-        <CaseStudyLabel>What I Learned</CaseStudyLabel>
-        <div className="mt-3 space-y-2 text-sm leading-6 text-foreground/85">
-          {study.learned.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
-      </div>
+      <CaseStudySection title="Communication & ACK Architecture">
+        {study.ackArchitecture.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
+      </CaseStudySection>
     </section>
   );
 }
