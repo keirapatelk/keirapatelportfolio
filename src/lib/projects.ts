@@ -56,27 +56,22 @@ export type Project = {
 
 export const bluetoothPagerCaseStudy = {
   overview:
-    "I fully designed and built a compact wireless pager system consisting of two custom PCBs: a transmitter and a receiver. The system sends one of three predefined messages wirelessly over Bluetooth Low Energy, through walls and across a household.",
+    "In this project, I fully designed and built a compact wireless pager system consisting of two custom PCBs: a transmitter and a receiver. The system allows a user to send one of three predefined messages wirelessly over BLE through walls and across a household.",
   constraints: [
-    "Low power consumption",
-    "Reliable communication across a household",
-    "Successful acknowledgement protocol",
+    "low power consumption",
+    "reliable communication across a household and through walls",
+    "successful acknowledgement protocol between transmitter and receiver",
   ],
   ackArchitecture: [
-    "I implemented a two-way acknowledgement system so the transmitter can indicate that an alert reached and was processed by the receiver. After receiving and displaying the alert, the receiver automatically sends an ACK back. The transmitter then activates its ACK LED, confirming that the message was successfully displayed.",
-    "Each PCB also includes a dedicated connection-status LED. It illuminates once the transmitter and receiver establish a BLE connection, allowing the user to verify that both devices are ready before sending an alert.",
+    "I implemented a two-way acknowledgment system so the transmitter can indicate that an alert reached and was processed by the receiver. After receiving and displaying the alert sent by the transmitter, the receiver automatically sends an ACK back and activates its ACK LED. Upon receiving the ACK from the receiver, the transmitter then activates its ACK LED. The devices automatically acknowledge each other to let both users know they are communicating successfully.",
+    "To provide immediate feedback on their wireless connection, each PCB includes a dedicated connection status LED. The LED illuminates once the transmitter and receiver successfully establish a BLE connection, allowing the user to verify that the devices are ready to communicate before sending an alert.",
   ],
   powerOptimization:
-    "Because the transmitter is mounted outside a doorway, it is battery-powered while the receiver uses continuous power. I implemented ESP32 sleep functionality and Bluetooth Low Energy to reduce idle consumption between messages.",
+    "Since the transmitter is meant to be mounted on the wall, it is designed to be battery-powered, unlike the receiver. Minimizing idle power consumption was an important design consideration for the transmitter. I implemented ESP32 sleep functionality and utilized Bluetooth Low Energy to reduce energy consumption between messages.",
   customPcb:
-    "Both devices were designed as custom two-layer PCBs rather than assembled from development boards. I used Altium Designer to lay out both boards and create the required component footprints. One unusual battery module required a custom schematic symbol, footprint, and pin layout for the transmitter PCB.",
+    "Both devices were designed as custom PCBs rather than assembled from development boards. I used Altium Designer to design the boards and create the required component footprints. One unusual battery module required a custom footprint. I created the footprint in Altium Designer with a custom schematic and pin layout. This module can be seen on the transmitter PCB.",
   interaction:
-    "The transmitter uses three physical buttons, each mapped to a predefined alert. The receiver displays incoming messages on a 1602A LCD and includes two potentiometers for backlight brightness and text contrast, keeping the display readable in different lighting conditions with an entirely hardware-controlled interface.",
-  learned: [
-    "This project required me to work across the boundary between hardware and firmware rather than treating them as separate systems.",
-    "The most important lesson was that wireless communication is not simply a matter of sending data. A useful embedded system must communicate its own state: whether devices are connected, whether a message was received, and whether the system is operating reliably.",
-    "I also gained experience taking a system from individual components and firmware to a custom PCB implementation, including footprint creation, board layout, wireless considerations, power management, and system-level debugging.",
-  ],
+    "The transmitter uses three physical buttons, with each button mapped to a different predefined alert message. The receiver uses a 1602A LCD to display incoming messages and includes two potentiometers for adjusting the display's backlight brightness and text contrast. This allows the display to remain readable under different ambient lighting conditions while keeping the interface entirely hardware controlled.",
   images: [
     { src: pagerImg, alt: "Bluetooth pager transmitter and receiver hardware." },
     { src: pagerBoardImg, alt: "Custom Bluetooth pager PCB and components." },
@@ -99,28 +94,10 @@ export const projects: Project[] = [
       "Altium Designer",
       "SPI",
       "Bluetooth Low Energy (BLE)",
-      "2-layer custom PCBs and components",
+      "2 Layer Custom PCBs and Components",
     ],
     summary: " ",
-    sections: {
-      pairs: [
-        {
-          challenge: "Low power consumption — the transmitter runs on a small battery mounted outside a doorway.",
-          solution:
-            "Implemented ESP32 sleep functionality and used Bluetooth Low Energy (BLE) to keep average current draw low between messages.",
-        },
-        {
-          challenge: "Reliable communication across a household, through walls and between rooms.",
-          solution:
-            "Optimized antenna placement, minimized device separation, and paired the link with an acknowledgement protocol so dropped messages are visible.",
-        },
-        {
-          challenge: "Successful acknowledgement protocol so the user knows the alert was received.",
-          solution:
-            "Built a two-way ACK system: the receiver sends an ACK back after displaying the message, and the transmitter lights an ACK LED. A separate connection-status LED on each board confirms the BLE link is ready.",
-        },
-      ],
-},
+    sections: {},
     image: pagerImg,
     imageAlt: "Custom Bluetooth pager PCB on light blue linen.",
     images: [
