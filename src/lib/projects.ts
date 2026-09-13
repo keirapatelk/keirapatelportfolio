@@ -28,7 +28,6 @@ export type ChallengeSolution = { challenge: string; solution: string };
 
 export type ProjectSections = {
   overview?: string;
-  objective?: string;
   pairs?: ChallengeSolution[];
   results?: string;
   details?: { title: string; paragraphs: string[] }[];
@@ -105,8 +104,6 @@ export const projects: Project[] = [
     ],
     summary: " ",
     sections: {
-      objective:
-        "Create a compact, low-power Bluetooth pager to send alerts across a household, with a focus on low latency and acknowledgement (ACK) of received messages.",
       pairs: [
         {
           challenge: "Low power consumption — the transmitter runs on a small battery mounted outside a doorway.",
@@ -145,8 +142,6 @@ export const projects: Project[] = [
     stack: ["Quartus Prime", "Intel DE10-Lite", "Mealy FSM", "Karnaugh Maps", "Digital Logic"],
     summary: "Rolling set of FPGA experiments — UART, FIR filters, and more.",
     sections: {
-      objective:
-        "Internalize digital design fundamentals by building a working dice game in Verilog on the DE10-Lite, from FSM to physical I/O.",
       pairs: [
         {
           challenge: "Translating game rules into clean synchronous logic.",
@@ -198,8 +193,6 @@ export const projects: Project[] = [
     sections: {
       overview:
         "In this project, I built a sound following robot that autonomously turns and drives towards a sound source using a two microphone input system. Raw inputs are converted through the analog and digital filters to find and adjust movement towards the sound source’s direction.",
-      objective:
-        "Build a sound-following robot that autonomously turns and drives toward a sound source using a two-microphone input system, real-time filtering, and PWM motor control.",
       pairs: [
         {
           challenge: "Reject frequencies outside of the human vocal frequency range.",
@@ -227,20 +220,20 @@ export const projects: Project[] = [
           ],
         },
         {
+          title: "Analog & Digital Filter Design",
+          paragraphs: [
+            "To handle the analog filter, I used a first-order RC circuit with a potentiometer to alter the cutoff frequencies as needed. A simple formula can be used to determine the cutoff frequencies for a given RC circuit, and the resistance across the potentiometer can be found with an oscilloscope. Bode plots were analyzed over the RC circuits to determine that the calculated cutoff frequency was correct by inspecting where the circuit’s power had halved.",
+            "For the digital filtering, I used a hardware handler to trigger ADC sampling. These samples were averaged out, and a single value was cascaded into high-pass and low-pass digital filters in firmware using C programming. I debugged digital cutoff frequencies by analyzing Fast Fourier Transform (FFT) graphs and confirming that frequencies outside the passband were sufficiently attenuated.",
+            "By designing a passband to isolate the human vocal frequency range, the robot was able to ignore external noise, such as the turning of its own wheels, to ensure directional commands were accurate.",
+          ],
+        },
+        {
           title: "Motor Control & Turn Logic",
           paragraphs: [
             "Each motor's direction is controlled through an external H-bridge driver, with GPIO pin pairs setting which way current flows through each motor to determine wheel direction. Speed is controlled independently through PWM, using Timer_A compare registers to set the duty cycle delivered to each wheel.",
             "During normal tracking, the robot performs gradual turns by running both motors forward but at different duty cycles to make one wheel faster than the other. For a full 180° rotation, the robot instead spins around by reversing one motor's direction pins while driving both wheels at equal speed.",
             "The motor control decision-making is determined by the amplitude difference between the right and left side microphones. A strong signal from the left microphone prompts the motors to execute a left-side turn, and vice versa. If there is a significant volume drop across both microphones, the microcontroller assumes the audio source has been moved behind the robot and rotates 180°.",
             "I noticed a microphone sensitivity difference between the left and right side microphones and created a “MIC_CALIBRATION” variable to scale the different sides to the same intensity and ensure the robot could accurately determine the location of the sound source.",
-          ],
-        },
-        {
-          title: "Analog & Digital Filter Design",
-          paragraphs: [
-            "To handle the analog filter, I used a first-order RC circuit with a potentiometer to alter the cutoff frequencies as needed. A simple formula can be used to determine the cutoff frequencies for a given RC circuit, and the resistance across the potentiometer can be found with an oscilloscope. Bode plots were analyzed over the RC circuits to determine that the calculated cutoff frequency was correct by inspecting where the circuit’s power had halved.",
-            "For the digital filtering, I used a hardware handler to trigger ADC sampling. These samples were averaged out, and a single value was cascaded into high-pass and low-pass digital filters in firmware using C programming. I debugged digital cutoff frequencies by analyzing Fast Fourier Transform (FFT) graphs and confirming that frequencies outside the passband were sufficiently attenuated.",
-            "By designing a passband to isolate the human vocal frequency range, the robot was able to ignore external noise, such as the turning of its own wheels, to ensure directional commands were accurate.",
           ],
         },
         {
@@ -270,8 +263,6 @@ export const projects: Project[] = [
     stack: ["ESP32", "I²S DAC", "I2C", "SPI", "Interrupts", "State Machine"],
     summary: "ESP32-driven FLAC player with a rotary encoder and printed shell.",
     sections: {
-      objective:
-        "Build a small, focused music player that only does one thing — decode and play FLAC files from a rotary-encoder UI — and does it calmly.",
       pairs: [
         {
           challenge: "Decoding FLAC in real time on a resource-constrained ESP32.",
@@ -308,8 +299,6 @@ export const projects: Project[] = [
     stack: ["React", "Tailwind", "Vite"],
     summary: "A vibecoded website for Mammoten — fast iteration, clean feel.",
     sections: {
-      objective:
-        "Take Mammoten from a rough moodboard to a shipped marketing site in a single afternoon, leaning on intuition over process.",
       pairs: [
         {
           challenge: "Choosing a visual direction without a full brand system.",
@@ -341,8 +330,6 @@ export const projects: Project[] = [
     stack: ["Python", "React", "PostgreSQL", "OpenCV"],
     summary: "A live water polo stat-tracking tool built with Aggie Sports Analytics.",
     sections: {
-      objective:
-        "Give UC Davis water polo coaches live, on-deck visibility into shots, saves, exclusions, and possession as the game happens.",
       pairs: [
         {
           challenge: "Logging fast-moving events without falling behind play.",
@@ -374,8 +361,6 @@ export const projects: Project[] = [
     stack: ["OBD-II", "Diagnostics", "Field work"],
     summary: "Interned at Jamboree Smog running emissions tests and diagnostics.",
     sections: {
-      objective:
-        "Learn the practical side of vehicle emissions testing end-to-end — from OBD-II diagnostics to tailpipe measurements to certification paperwork.",
       pairs: [
         {
           challenge: "Reading intermittent OBD-II fault codes on older vehicles.",
@@ -407,8 +392,6 @@ export const projects: Project[] = [
     stack: ["MATLAB", "ThingSpeak", "Online Gameplay", "MATLAB App Designer"],
     summary: "An implementation of the PIG dice game with a simple AI opponent.",
     sections: {
-      objective:
-        "Implement the classic PIG dice game in MATLAB App Designer with online play and a lightweight strategy opponent.",
       pairs: [
         {
           challenge: "Syncing turns between two players over the network.",
@@ -440,8 +423,6 @@ export const projects: Project[] = [
     stack: ["Fusion 360", "Arduino IDE", "Bambu Studio", "AutoCAD", "Laser Cutting"],
     summary: "A prototype restraint system designed for quicker, safer wheelchair securement.",
     sections: {
-      objective:
-        "Cut the time it takes to secure a wheelchair in a vehicle without sacrificing safety, informed by real user interviews.",
       pairs: [
         {
           challenge: "Existing restraints require two hands and multiple steps.",
@@ -473,8 +454,6 @@ export const projects: Project[] = [
     stack: ["Fusion 360", "Bambu Studio"],
     summary: "A 3D printed adapter to fit a non-standard band to a watch case.",
     sections: {
-      objective:
-        "Model and print a small adapter that lets a band I liked fit a watch case it wasn't made for.",
       pairs: [
         {
           challenge: "Spring bar pockets have to be right within a tenth of a millimeter.",
@@ -506,8 +485,6 @@ export const projects: Project[] = [
     stack: ["C", "TI-MSPEXP430", "Interrupts"],
     summary: "A microcontroller-driven Pong game with a small OLED and physical buttons.",
     sections: {
-      objective:
-        "Write a Pong clone in C on the TI MSP430, driving a small OLED and reading two physical buttons per player.",
       pairs: [
         {
           challenge: "Keeping frame timing steady while polling inputs.",
@@ -539,8 +516,6 @@ export const projects: Project[] = [
     stack: ["React", "Tailwind", "Vite"],
     summary: "A vibecoded website for the IEEE student branch — shipped fast, kept clean.",
     sections: {
-      objective:
-        "Take the IEEE student branch from a loose brief to a live site in a single vibecoded session.",
       pairs: [
         {
           challenge: "Communicating events clearly to new members.",
