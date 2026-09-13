@@ -71,7 +71,6 @@ export const bluetoothPagerCaseStudy = {
     { src: pagerImg, alt: "Bluetooth pager transmitter and receiver hardware." },
     { src: pagerBoardImg, alt: "Custom Bluetooth pager PCB and components." },
     { src: pagerDetailImg, alt: "Detailed view of the pager electronics." },
-    { src: pagerImg, alt: "Completed Bluetooth pager system." },
   ],
 };
 
