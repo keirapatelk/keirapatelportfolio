@@ -68,13 +68,7 @@ function ProjectDetail() {
           </Link>
         </div>
 
-        <header className="relative pb-8 pt-8 sm:pb-10">
-          <img
-            src={circuitBranch.url}
-            alt=""
-            aria-hidden
-            className="pointer-events-none absolute right-0 top-2 hidden h-28 w-auto rotate-90 opacity-30 sm:block"
-          />
+        <header className="pb-8 pt-8 sm:pb-10">
           <p className="font-mono text-xs uppercase text-accent">
             {project.year} · {project.role}
           </p>
