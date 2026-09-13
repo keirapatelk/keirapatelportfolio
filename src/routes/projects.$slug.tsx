@@ -6,7 +6,6 @@ import {
   projects,
   type Project,
 } from "@/lib/projects";
-import circuitBranch from "@/assets/circuit-branch.png.asset.json";
 
 export const Route = createFileRoute("/projects/$slug")({
   loader: ({ params }) => {
@@ -68,13 +67,7 @@ function ProjectDetail() {
           </Link>
         </div>
 
-        <header className="relative pb-8 pt-8 sm:pb-10">
-          <img
-            src={circuitBranch.url}
-            alt=""
-            aria-hidden
-            className="pointer-events-none absolute right-0 top-2 hidden h-28 w-auto rotate-90 opacity-30 sm:block"
-          />
+        <header className="pb-8 pt-8 sm:pb-10">
           <p className="font-mono text-xs uppercase text-accent">
             {project.year} · {project.role}
           </p>
@@ -159,13 +152,7 @@ function ProjectDetail() {
           </section>
         )}
 
-        <section className="relative py-8">
-          <img
-            src={circuitBranch.url}
-            alt=""
-            aria-hidden
-            className="pointer-events-none absolute bottom-3 right-2 hidden h-20 w-auto rotate-90 opacity-20 sm:block"
-          />
+        <section className="py-8">
           <p className="font-mono text-xs uppercase text-muted-foreground">Next project</p>
           <Link
             to="/projects/$slug"
