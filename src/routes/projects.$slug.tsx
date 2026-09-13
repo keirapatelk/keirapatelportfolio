@@ -47,14 +47,17 @@ function ProjectDetail() {
   const nextProject = list[(projectIndex + 1) % list.length];
   const isPager = project.slug === "bluetooth-pager";
   const availableImages = isPager ? bluetoothPagerCaseStudy.images.slice(0, 3) : project.images;
-  const hasSplitHeader = !isPager && availableImages.length > 1;
+  const inferredHeaderMode = project.images.length > 1 ? "split" : "wide";
+  const headerMode = isPager ? "wide" : project.headerMode ?? inferredHeaderMode;
+  const hasSplitHeader = headerMode === "split";
   const headerImages = hasSplitHeader ? availableImages.slice(0, 2) : availableImages.slice(0, 1);
-  const supportingImages = isPager
-    ? availableImages.slice(1, 3)
-    : [availableImages[1] ?? availableImages[0], availableImages[0]];
+  const supportingImages = hasSplitHeader
+    ? availableImages.slice(2, 4)
+    : availableImages.slice(1, 3);
   const overview = isPager
     ? bluetoothPagerCaseStudy.overview
-    : project.sections.objective ?? project.summary;
+    : project.sections.overview ?? project.sections.objective ?? project.summary;
+
 
   return (
     <SiteLayout>
@@ -142,16 +145,45 @@ function ProjectDetail() {
           ))}
         </div>
 
-        {isPager ? (
-          <PagerDetails />
-        ) : (
-          <section className="border-y border-border py-8">
-            <CaseStudyLabel>Results</CaseStudyLabel>
-            <p className="mt-3 max-w-3xl text-base leading-6 text-foreground/85">
-              {project.sections.results}
-            </p>
-          </section>
-        )}
+        <div className="border-y border-border py-8">
+          {project.sections.details && project.sections.details.length > 0 && (
+            <section className="grid gap-x-10 gap-y-8 md:grid-cols-2">
+              {project.sections.details.map((detail) => (
+                <CaseStudySection key={detail.title} title={detail.title}>
+                  {detail.paragraphs.map((paragraph) => (
+                    <p key={paragraph} className="text-sm leading-6 text-foreground/85">
+                      {paragraph}
+                    </p>
+                  ))}
+                </CaseStudySection>
+              ))}
+            </section>
+          )}
+
+          {isPager ? (
+            <PagerDetails
+              className={
+                project.sections.details && project.sections.details.length > 0
+                  ? "border-t border-border pt-8"
+                  : undefined
+              }
+            />
+          ) : (
+            <section
+              className={
+                project.sections.details && project.sections.details.length > 0
+                  ? "border-t border-border pt-8"
+                  : undefined
+              }
+            >
+              <CaseStudyLabel>Results</CaseStudyLabel>
+              <p className="mt-3 max-w-3xl text-base leading-6 text-foreground/85">
+                {project.sections.results}
+              </p>
+            </section>
+          )}
+        </div>
+
 
         <section className="py-8">
           <p className="font-mono text-xs uppercase text-muted-foreground">Next project</p>
@@ -220,10 +252,11 @@ function CaseStudySection({ title, children }: { title: string; children: React.
   return (
     <div>
       <CaseStudyLabel>{title}</CaseStudyLabel>
-      <p className="mt-3 text-sm leading-6 text-foreground/85">{children}</p>
+      <div className="mt-3 space-y-2 text-sm leading-6 text-foreground/85">{children}</div>
     </div>
   );
 }
+
 
 function ProjectNotFound() {
   return (
