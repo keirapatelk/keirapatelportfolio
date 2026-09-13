@@ -3,6 +3,7 @@ import pagerBoardImg from "@/assets/project-pager.jpg";
 import pagerDetailImg from "@/assets/project-pager-detail.jpg";
 import fpgaImg from "@/assets/fpgaDiceGame.png";
 import fpgaDetailImg from "@/assets/fpgaQuartus.png";
+import fpgaWideAsset from "@/assets/fpga-wide.png.asset.json";
 import musicImg from "@/assets/musicPlayer.jpg";
 import musicDetailImg from "@/assets/project-music-player-detail.jpg";
 import mammotenImg from "@/assets/mammoTENWebsite.png";
@@ -51,6 +52,8 @@ export type Project = {
   image: string;
   imageAlt: string;
   images: { src: string; alt: string }[];
+  /** Optional full-width image rendered below the supporting gallery. */
+  wideImage?: { src: string; alt: string };
 };
 
 
@@ -194,6 +197,10 @@ export const projects: Project[] = [
       { src: fpgaImg, alt: "FPGA development board glowing with blue LEDs." },
       { src: fpgaDetailImg, alt: "FPGA board with a waveform display and Verilog code in the background." },
     ],
+    wideImage: {
+      src: fpgaWideAsset.url,
+      alt: "Wide shot of the FPGA dice game board powered on with seven-segment displays.",
+    },
   },
   {
     visible: true,
