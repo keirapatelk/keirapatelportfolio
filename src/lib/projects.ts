@@ -273,9 +273,7 @@ details: [
             "Designed a printed shell around the PCB with recesses for the screen and dial so it feels machined in hand.",
         },
       ],
-      results:
-        "A pocket player with a 1.3\" screen and a rotary encoder that boots straight into music — no menus, no distractions.",
-    },
+},
     image: musicImg,
     imageAlt: "Handheld music player with a round dial on pale blue paper.",
     images: [
