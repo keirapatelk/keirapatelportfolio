@@ -224,11 +224,13 @@ function ProjectFigure({
   );
 }
 
-function PagerDetails() {
+function PagerDetails({ className }: { className?: string }) {
   const study = bluetoothPagerCaseStudy;
 
   return (
-    <section className="grid gap-x-10 gap-y-8 border-y border-border py-8 md:grid-cols-2">
+    <section
+      className={`grid gap-x-10 gap-y-8 md:grid-cols-2 ${className ?? ""}`}
+    >
       <CaseStudySection title="Power Optimization">{study.powerOptimization}</CaseStudySection>
       <CaseStudySection title="Custom PCB Design">{study.customPcb}</CaseStudySection>
       <CaseStudySection title="User Interface & Interaction">{study.interaction}</CaseStudySection>
@@ -243,6 +245,7 @@ function PagerDetails() {
     </section>
   );
 }
+
 
 function CaseStudyLabel({ children }: { children: React.ReactNode }) {
   return <h2 className="font-display text-lg font-semibold sm:text-xl">{children}</h2>;
