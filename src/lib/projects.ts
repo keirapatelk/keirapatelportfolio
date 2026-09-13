@@ -52,6 +52,8 @@ export type Project = {
   image: string;
   imageAlt: string;
   images: { src: string; alt: string }[];
+  /** Optional full-width image rendered below the supporting gallery. */
+  wideImage?: { src: string; alt: string };
 };
 
 
