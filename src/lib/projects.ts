@@ -290,6 +290,7 @@ details: [
   {
     visible: true,
     featured: true,
+    headerMode: "stacked",
     slug: "music-player",
     title: "Embedded Audio Player",
     kicker: "Custom MP3 player with playlists, album art, and a beginner-friendly build guide.",
