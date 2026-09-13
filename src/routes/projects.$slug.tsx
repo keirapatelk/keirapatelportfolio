@@ -88,16 +88,26 @@ function ProjectDetail() {
           </h1>
         </header>
 
-        <div className={hasSplitHeader ? "grid gap-4 sm:grid-cols-2" : "grid"}>
-          {headerImages.map((image, index) => (
-            <ProjectFigure
-              key={`${image.src}-header-${index}`}
-              image={image}
-              number={index + 1}
-              shape={hasSplitHeader ? "square" : "wide"}
-            />
-          ))}
-        </div>
+        {isStacked ? (
+          <div className="grid gap-4">
+            <ProjectFigure image={headerImages[0]} number={1} shape="wide" />
+            <div className="grid gap-4 sm:grid-cols-2">
+              <ProjectFigure image={headerImages[1]} number={2} shape="square" />
+              <ProjectFigure image={headerImages[2]} number={3} shape="square" />
+            </div>
+          </div>
+        ) : (
+          <div className={hasSplitHeader ? "grid gap-4 sm:grid-cols-2" : "grid"}>
+            {headerImages.map((image, index) => (
+              <ProjectFigure
+                key={`${image.src}-header-${index}`}
+                image={image}
+                number={index + 1}
+                shape={hasSplitHeader ? "square" : "wide"}
+              />
+            ))}
+          </div>
+        )}
 
         <section className="grid gap-6 border-b border-border py-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-12">
           <div className="space-y-6">
