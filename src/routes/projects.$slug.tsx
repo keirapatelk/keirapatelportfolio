@@ -57,6 +57,7 @@ function ProjectDetail() {
   const overview = isPager
     ? bluetoothPagerCaseStudy.overview
     : project.sections.overview ?? project.summary;
+  const challengePairs = isPager ? bluetoothPagerCaseStudy.pairs : project.sections.pairs;
 
 
   return (
@@ -106,34 +107,21 @@ function ProjectDetail() {
           </div>
 
           <div>
-            {isPager ? (
-              <>
-                <CaseStudyLabel>Design Constraints &amp; Specifications</CaseStudyLabel>
-                <ul className="mt-3 list-disc space-y-1 pl-4 text-sm leading-6 text-foreground/85">
-                  {bluetoothPagerCaseStudy.constraints.map((constraint) => (
-                    <li key={constraint}>{constraint}</li>
-                  ))}
-                </ul>
-              </>
-            ) : (
-              <>
-                <CaseStudyLabel>Challenges &amp; Solutions</CaseStudyLabel>
-                <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                  {project.sections.pairs?.map((pair, index) => (
-                    <div
-                      key={`${pair.challenge}-${index}`}
-                      className="rounded-lg border border-border bg-surface/50 p-3"
-                    >
-                      <p className="font-mono text-[10px] uppercase text-accent">0{index + 1}</p>
-                      <p className="mt-1 text-sm leading-5 text-foreground/85">{pair.challenge}</p>
-                      <div className="my-2 h-px bg-border" aria-hidden />
-                      <p className="font-mono text-[10px] uppercase text-accent">Solution</p>
-                      <p className="mt-1 text-sm leading-5 text-foreground/85">{pair.solution}</p>
-                    </div>
-                  ))}
+            <CaseStudyLabel>Challenges &amp; Solutions</CaseStudyLabel>
+            <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {challengePairs?.map((pair, index) => (
+                <div
+                  key={`${pair.challenge}-${index}`}
+                  className="rounded-lg border border-border bg-surface/50 p-3"
+                >
+                  <p className="font-mono text-[10px] uppercase text-accent">0{index + 1}</p>
+                  <p className="mt-1 text-sm leading-5 text-foreground/85">{pair.challenge}</p>
+                  <div className="my-2 h-px bg-border" aria-hidden />
+                  <p className="font-mono text-[10px] uppercase text-accent">Solution</p>
+                  <p className="mt-1 text-sm leading-5 text-foreground/85">{pair.solution}</p>
                 </div>
-              </>
-            )}
+              ))}
+            </div>
           </div>
         </section>
 
