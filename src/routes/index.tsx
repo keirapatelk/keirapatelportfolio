@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
-import { projects } from "@/lib/projects";
+import { featuredProjects, otherProjects, type Project } from "@/lib/projects";
 import heroCover from "@/assets/hero-cover.jpg";
 import portraitPlaceholder from "@/assets/portrait-placeholder.jpg";
 
@@ -103,10 +103,10 @@ function Home() {
 
       <main className="mx-auto max-w-6xl px-6">
         {/* Collage */}
-        <section className="pt-4 pb-24">
+        <section className="pt-4 pb-14">
           <div className="mb-8 flex items-baseline justify-between">
             <h2 className="font-display text-2xl font-semibold tracking-tight">
-              Selected projects
+              Featured projects
             </h2>
             <Link
               to="/projects"
@@ -115,38 +115,14 @@ function Home() {
               See all →
             </Link>
           </div>
+          <HomeProjectGrid items={featuredProjects()} />
+        </section>
 
-          <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.map((p) => (
-              <li key={p.slug}>
-                <Link
-                  to="/projects/$slug"
-                  params={{ slug: p.slug }}
-                  className="group block overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-accent"
-                >
-                  <div className="aspect-[4/3] overflow-hidden bg-surface">
-                    <img
-                      src={p.image}
-                      alt={p.imageAlt}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                    />
-                  </div>
-                  <div className="p-5">
-                    <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                      {p.year}
-                    </p>
-                    <h3 className="mt-2 font-display text-lg font-semibold tracking-tight">
-                      {p.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      {p.summary}
-                    </p>
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <section className="pb-24">
+          <h2 className="mb-8 font-display text-2xl font-semibold tracking-tight">
+            Projects
+          </h2>
+          <HomeProjectGrid items={otherProjects()} />
         </section>
 
         <section className="pb-16">
@@ -169,5 +145,41 @@ function Home() {
         </section>
       </main>
     </SiteLayout>
+  );
+}
+
+function HomeProjectGrid({ items }: { items: Project[] }) {
+  return (
+    <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {items.map((p) => (
+        <li key={p.slug}>
+          <Link
+            to="/projects/$slug"
+            params={{ slug: p.slug }}
+            className="group block overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-accent"
+          >
+            <div className="aspect-[4/3] overflow-hidden bg-surface">
+              <img
+                src={p.image}
+                alt={p.imageAlt}
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+              />
+            </div>
+            <div className="p-5">
+              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                {p.year}
+              </p>
+              <h3 className="mt-2 font-display text-lg font-semibold tracking-tight">
+                {p.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {p.summary}
+              </p>
+            </div>
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 }

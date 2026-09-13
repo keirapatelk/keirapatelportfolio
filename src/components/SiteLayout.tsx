@@ -1,5 +1,6 @@
 import { Link, Outlet } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import { pageVisibility } from "@/lib/site-config";
 
 export function SiteLayout({ children }: { children?: ReactNode }) {
   return (
@@ -17,20 +18,24 @@ export function SiteLayout({ children }: { children?: ReactNode }) {
           >
             Home
           </Link>
-          <Link
-            to="/projects"
-            activeProps={{ className: "text-foreground" }}
-            className="transition-colors hover:text-foreground"
-          >
-            Projects
-          </Link>
-          <Link
-            to="/contact"
-            activeProps={{ className: "text-foreground" }}
-            className="transition-colors hover:text-foreground"
-          >
-            Contact
-          </Link>
+          {pageVisibility.projects && (
+            <Link
+              to="/projects"
+              activeProps={{ className: "text-foreground" }}
+              className="transition-colors hover:text-foreground"
+            >
+              Projects
+            </Link>
+          )}
+          {pageVisibility.contact && (
+            <Link
+              to="/contact"
+              activeProps={{ className: "text-foreground" }}
+              className="transition-colors hover:text-foreground"
+            >
+              Contact
+            </Link>
+          )}
         </nav>
       </header>
 

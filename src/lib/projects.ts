@@ -31,6 +31,10 @@ export type ProjectSections = {
 };
 
 export type Project = {
+  /** Set to false to hide this project everywhere (its page returns not found). */
+  visible?: boolean;
+  /** Set to true to show this project in the "Featured projects" section. */
+  featured?: boolean;
   slug: string;
   title: string;
   kicker: string;
@@ -76,6 +80,8 @@ export const bluetoothPagerCaseStudy = {
 
 export const projects: Project[] = [
   {
+    visible: true,
+    featured: true,
     slug: "bluetooth-pager",
     title: "PCB Bluetooth Pager",
     kicker: "Mid-range, multilevel household message system made with ESP32.",
@@ -121,6 +127,8 @@ export const projects: Project[] = [
   },
 
   {
+    visible: true,
+    featured: true,
     slug: "fpga-playground",
     title: "FPGA Dice Game",
     kicker: "Learning digital design by building it in Verilog.",
@@ -462,6 +470,21 @@ export const projects: Project[] = [
   },
 ];
 
+export function isVisible(p: Project): boolean {
+  return p.visible !== false;
+}
+
+/** Every project that should show up on the site. */
+export const visibleProjects = (): Project[] => projects.filter(isVisible);
+
+/** Projects marked featured: true. */
+export const featuredProjects = (): Project[] =>
+  visibleProjects().filter((p) => p.featured === true);
+
+/** Visible projects that are not featured. */
+export const otherProjects = (): Project[] =>
+  visibleProjects().filter((p) => p.featured !== true);
+
 export function getProject(slug: string): Project | undefined {
-  return projects.find((p) => p.slug === slug);
+  return projects.find((p) => p.slug === slug && isVisible(p));
 }
