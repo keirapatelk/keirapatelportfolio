@@ -197,6 +197,10 @@ export const projects: Project[] = [
       { src: fpgaImg, alt: "FPGA development board glowing with blue LEDs." },
       { src: fpgaDetailImg, alt: "FPGA board with a waveform display and Verilog code in the background." },
     ],
+    wideImage: {
+      src: fpgaWideAsset.url,
+      alt: "Wide shot of the FPGA dice game board powered on with seven-segment displays.",
+    },
   },
   {
     visible: true,
