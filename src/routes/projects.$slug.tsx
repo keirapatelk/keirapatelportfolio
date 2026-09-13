@@ -56,7 +56,7 @@ function ProjectDetail() {
     : availableImages.slice(1, 3);
   const overview = isPager
     ? bluetoothPagerCaseStudy.overview
-    : project.sections.overview ?? project.sections.objective ?? project.summary;
+    : project.sections.overview ?? project.summary;
 
 
   return (
