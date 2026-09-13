@@ -345,7 +345,6 @@ details: [
         },
         {
           title: "Beginner's Guide",
-          wide: true,
           paragraphs: [
             "To make the ESP32 music player accessible for beginner engineers, I designed and wrote a beginner-focused engineering guide that teaches readers how to build the system from the ground up. The guide breaks down the interactions between the ESP32, a microSD card, TFT display, physical controls, and I2S audio hardware, while introducing the embedded concepts and functions required to bring each subsystem together.",
             "Rather than treating the project as a collection of copy and paste code, I structured the guide around problem-solving and function creation. Each chapter explains why specific hardware and software decisions were made, walks through key code components, and incorporates debugging exercises and challenges that encourage readers to modify the system themselves.",
