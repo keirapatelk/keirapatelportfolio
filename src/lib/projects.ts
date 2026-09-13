@@ -80,6 +80,8 @@ export const bluetoothPagerCaseStudy = {
 
 export const projects: Project[] = [
   {
+    visible: true,
+    featured: true,
     slug: "bluetooth-pager",
     title: "PCB Bluetooth Pager",
     kicker: "Mid-range, multilevel household message system made with ESP32.",
@@ -125,6 +127,8 @@ export const projects: Project[] = [
   },
 
   {
+    visible: true,
+    featured: true,
     slug: "fpga-playground",
     title: "FPGA Dice Game",
     kicker: "Learning digital design by building it in Verilog.",
