@@ -95,34 +95,23 @@ export const projects: Project[] = [
         "Create a compact, low-power Bluetooth pager to send alerts across a household, with a focus on low latency and acknowledgement (ACK) of received messages.",
       pairs: [
         {
-          challenge: "Establishing a secure acknowledgment (ACK) mechanism for received messages.",
+          challenge: "Low power consumption — the transmitter runs on a small battery mounted outside a doorway.",
           solution:
-            "Implementing 2 on-board LEDs on each reciver and transmitter, to validate BLE connection, and verify transmitted messages.",
+            "Implemented ESP32 sleep functionality and used Bluetooth Low Energy (BLE) to keep average current draw low between messages.",
         },
         {
-          challenge: "Optimizing battery life on a small cell.",
+          challenge: "Reliable communication across a household, through walls and between rooms.",
           solution:
-            "Enabling ESP32 sleep, and utilizing Bluetooth Low Energy (BLE) to keep average current draw low between messages.",
+            "Optimized antenna placement, minimized device separation, and paired the link with an acknowledgement protocol so dropped messages are visible.",
         },
         {
-          challenge: "Fitting a unique battery module on a compact board.",
+          challenge: "Successful acknowledgement protocol so the user knows the alert was received.",
           solution:
-            "Designing a custom PCB footprint in Altium Designer for a 2-layer PCB" + 
-            " by utilizing standardized pin header layouts.",
-        },
-        {
-          challenge: "Communicating reliably through walls and across the house.",
-          solution:
-            "Optimizing antenna placement, ACK mechanism, and minimizng device separation to increase range and reliability of BLE communication.",
-        },
-        {
-          challenge: "Varying LCD text and background brightness to adapt to different lighting conditions.",
-          solution:
-            "Adding potentiometers to easily control LCD brightness keeping the screen stays readable under all lighting conditions.",
+            "Built a two-way ACK system: the receiver sends an ACK back after displaying the message, and the transmitter lights an ACK LED. A separate connection-status LED on each board confirms the BLE link is ready.",
         },
       ],
       results:
-        "results",
+        "A working household pager pair with custom two-layer PCBs, hardware-controlled LCD contrast and brightness, and clear visual feedback for connection, transmission, and acknowledgement.",
     },
     image: pagerImg,
     imageAlt: "Custom Bluetooth pager PCB on light blue linen.",
