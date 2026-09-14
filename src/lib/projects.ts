@@ -5,7 +5,7 @@ import fpgaImg from "@/assets/FPGAPic.png";
 import fpgaDetailImg from "@/assets/FPGASchematic.png";
 import fpgaWideAsset from "@/assets/FPGASimulation.png";
 import musicImg from "@/assets/MPImg.jpg";
-import musicDetailImg from "@/assets/MPImg.jpg";
+//import musicDetailImg from "@/assets/MPImg.jpg";
 import musicSquareOneImg from "@/assets/MPPCB.jpg";
 import musicSquareTwoImg from "@/assets/MPCode.png";
 import mammotenImg from "@/assets/mammoTENWebsite.png";
@@ -367,7 +367,7 @@ details: [
     image: musicImg,
     imageAlt: "Handheld music player with a round dial on pale blue paper.",
     images: [
-      { src: musicDetailImg, alt: "Exploded view of the music player showing the internal electronics." },
+      //{ src: musicDetailImg, alt: "Exploded view of the music player showing the internal electronics." },
       { src: musicSquareOneImg, alt: "Handheld music player with a round dial on pale blue paper." },
       { src: musicSquareTwoImg, alt: "Music player case and internal PCB with volume knob." },
     ],
