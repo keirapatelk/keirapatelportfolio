@@ -4,7 +4,7 @@ import pagerCodeImg from "@/assets/pagerCodeSnip.png";
 import fpgaImg from "@/assets/FPGAPic.png";
 import fpgaDetailImg from "@/assets/FPGASchematic.png";
 import fpgaWideAsset from "@/assets/FPGASimulation.png";
-import musicImg from "@/assets/MPImg.jpg";
+import musicImg from "@/assets/MPimage.jpg";
 //import musicDetailImg from "@/assets/MPImg.jpg";
 import musicSquareOneImg from "@/assets/MPPCB.jpg";
 import musicSquareTwoImg from "@/assets/MPCode.png";
