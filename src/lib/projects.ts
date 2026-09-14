@@ -1,13 +1,13 @@
 import pagerImg from "@/assets/bluetoothPagerPhoto.jpg";
-import pagerBoardImg from "@/assets/project-pager.jpg";
-import pagerDetailImg from "@/assets/project-pager-detail.jpg";
-import fpgaImg from "@/assets/fpgaDiceGame.png";
-import fpgaDetailImg from "@/assets/fpgaQuartus.png";
-import fpgaWideAsset from "@/assets/fpga-wide.png.asset.json";
-import musicImg from "@/assets/musicPlayer.jpg";
-import musicDetailImg from "@/assets/project-music-player-detail.jpg";
-import musicSquareOneImg from "@/assets/project-music.jpg";
-import musicSquareTwoImg from "@/assets/project-music-detail.jpg";
+import pagerBoardImg from "@/assets/pagerPCBSchematic.png";
+import pagerCodeImg from "@/assets/pagerCodeSnip.png";
+import fpgaImg from "@/assets/FPGAPic.png";
+import fpgaDetailImg from "@/assets/FPGASchematic.png";
+import fpgaWideAsset from "@/assets/FPGASimulation.png";
+import musicImg from "@/assets/MPImg.jpg";
+import musicDetailImg from "@/assets/MPImg.jpg";
+import musicSquareOneImg from "@/assets/MPPCB.jpg";
+import musicSquareTwoImg from "@/assets/MPCode.png";
 import mammotenImg from "@/assets/mammoTENWebsite.png";
 import mammotenDetailImg from "@/assets/project-mammoten-detail.jpg";
 import waterPoloImg from "@/assets/project-water-polo.jpg";
@@ -24,7 +24,10 @@ import pingPongImg from "@/assets/pingPongTIMSP.png";
 import pingPongDetailImg from "@/assets/project-ping-pong-detail.jpg";
 import ieeeWebsiteImg from "@/assets/ieeeWebsite.png";
 import ieeeWebsiteDetailImg from "@/assets/ieeeWebsiteDetail.png";
-import portraitPlaceholder from "@/assets/portrait-placeholder.jpg";
+import robotImg from "@/assets/SFRImg.png";
+import robotSchematic from "@/assets/SFRSpice.png";
+import robotOsc from "@/assets/SFROsc.png";
+import robotCode from "@/assets/SRCDebugger.png";
 
 
 export type ChallengeSolution = { challenge: string; solution: string };
@@ -91,8 +94,8 @@ export const bluetoothPagerCaseStudy = {
     "The transmitter uses three physical buttons, with each button mapped to a different predefined alert message. The receiver uses a 1602A LCD to display incoming messages and includes two potentiometers for adjusting the display's backlight brightness and text contrast. This allows the display to remain readable under different ambient lighting conditions while keeping the interface entirely hardware controlled.",
   images: [
     { src: pagerImg, alt: "Bluetooth pager transmitter and receiver hardware." },
-    { src: pagerBoardImg, alt: "Custom Bluetooth pager PCB and components." },
-    { src: pagerDetailImg, alt: "Detailed view of the pager electronics." },
+    { src: pagerBoardImg, alt: "Custom Bluetooth pager PCB layout." },
+    { src: pagerCodeImg, alt: "Code snippet of child class." },
   ],
 };
 
@@ -200,7 +203,7 @@ export const projects: Project[] = [
       { src: fpgaDetailImg, alt: "FPGA board with a waveform display and Verilog code in the background." },
     ],
     wideImage: {
-      src: fpgaWideAsset.url,
+      src: fpgaWideAsset,
       alt: "Wide shot of the FPGA dice game board powered on with seven-segment displays.",
     },
   },
@@ -277,13 +280,13 @@ details: [
         },
       ],
     },
-    image: portraitPlaceholder,
+    image: robotImg,
     imageAlt: "Sound following robot prototype.",
     images: [
-      { src: portraitPlaceholder, alt: "Sound following robot front view." },
-      { src: portraitPlaceholder, alt: "Sound following robot microphone and circuit layout." },
-      { src: portraitPlaceholder, alt: "Sound following robot motor driver wiring." },
-      { src: portraitPlaceholder, alt: "Sound following robot oscilloscope reading." },
+      { src: robotImg, alt: "Sound following robot front view." },
+      { src: robotSchematic, alt: "Sound following robot microphone and circuit layout." },
+      { src: robotOsc, alt: "Sound following robot motor driver wiring." },
+      { src: robotCode, alt: "Sound following robot oscilloscope reading." },
     ],
   },
 
