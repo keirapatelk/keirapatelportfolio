@@ -130,24 +130,6 @@ function Home() {
           </section>
         )}
 
-        <section className="pb-16">
-          <h2 className="mb-6 font-display text-2xl font-semibold tracking-tight">
-            About Me
-          </h2>
-          <div className="space-y-5 text-lg leading-relaxed text-foreground/85">
-            <p>
-              Third-year electrical engineering major with an economics minor at
-              UC Davis. I like small, quiet electronics — PCBs you can hold in
-              one hand, FPGAs that do one thing well, and hardware that feels
-              considered.
-            </p>
-            <p>
-              Off the bench I'm usually near the water, running slow, or reading
-              about semiconductor history. Above is a small collage of things
-              I've built recently — click one to read more.
-            </p>
-          </div>
-        </section>
       </main>
     </SiteLayout>
   );
