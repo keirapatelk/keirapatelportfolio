@@ -109,22 +109,26 @@ function Home() {
             <h2 className="font-display text-2xl font-semibold tracking-tight">
               Featured projects
             </h2>
-            <Link
-              to="/projects"
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              See all →
-            </Link>
+            {pageVisibility.projects && (
+              <Link
+                to="/projects"
+                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                See all →
+              </Link>
+            )}
           </div>
           <HomeProjectGrid items={featuredProjects()} />
         </section>
 
-        <section className="pb-24">
-          <h2 className="mb-8 font-display text-2xl font-semibold tracking-tight">
-            Projects
-          </h2>
-          <HomeProjectGrid items={otherProjects()} />
-        </section>
+        {otherProjects().length > 0 && (
+          <section className="pb-24">
+            <h2 className="mb-8 font-display text-2xl font-semibold tracking-tight">
+              Projects
+            </h2>
+            <HomeProjectGrid items={otherProjects()} />
+          </section>
+        )}
 
         <section className="pb-16">
           <h2 className="mb-6 font-display text-2xl font-semibold tracking-tight">
