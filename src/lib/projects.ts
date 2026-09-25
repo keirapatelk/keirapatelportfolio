@@ -402,6 +402,7 @@ details: [
     ],
   },
   {
+    visible: false,
     slug: "asa-water-polo-tracker",
     title: "Computer Vision Water Polo Tracker",
     kicker: "Live stat tracking for UC Davis water polo.",
@@ -431,6 +432,7 @@ details: [
     ],
   },
   {
+    visible: false,
     slug: "jamboree-smog",
     title: "Jamboree Smog Internship",
     kicker: "Emissions testing and diagnostics in the field.",
@@ -460,6 +462,7 @@ details: [
     ],
   },
   {
+    visible: false,
     slug: "pig-dice-game",
     title: "MATLAB Online PIG Game",
     kicker: "A classic risk-it-or-bank-it dice game.",
@@ -518,6 +521,7 @@ details: [
     ],
   },
   {
+    visible: false,
     slug: "watch-adapter",
     title: "Watch & Sensor Adapter",
     kicker: "A tiny part to bridge two incompatible bands.",
@@ -547,6 +551,7 @@ details: [
     ],
   },
   {
+    visible: false,
     slug: "ping-pong-game",
     title: "TI-MSP Ping Pong ",
     kicker: "Pong on a microcontroller with real buttons.",
