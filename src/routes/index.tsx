@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { featuredProjects, otherProjects, type Project } from "@/lib/projects";
+import { pageVisibility } from "@/lib/site-config";
 import heroCover from "@/assets/hero-cover.jpg";
 import portraitPlaceholder from "@/assets/portrait-placeholder.jpg";
 
