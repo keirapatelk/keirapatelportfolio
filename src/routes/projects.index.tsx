@@ -1,6 +1,6 @@
 import { createFileRoute, Link, redirect } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
-import { featuredProjects, otherProjects, type Project } from "@/lib/projects";
+import { featuredProjects, type Project } from "@/lib/projects";
 import { pageVisibility } from "@/lib/site-config";
 
 export const Route = createFileRoute("/projects/")({
@@ -52,12 +52,6 @@ function ProjectsIndex() {
           </section>
         )}
 
-        <section className="pb-24">
-          <h2 className="mb-6 font-display text-2xl font-semibold tracking-tight">
-            Projects
-          </h2>
-          <ProjectGrid items={otherProjects()} />
-        </section>
       </main>
     </SiteLayout>
   );
