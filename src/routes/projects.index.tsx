@@ -1,8 +1,14 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, redirect } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { featuredProjects, otherProjects, type Project } from "@/lib/projects";
+import { pageVisibility } from "@/lib/site-config";
 
 export const Route = createFileRoute("/projects/")({
+  beforeLoad: () => {
+    if (!pageVisibility.projects) {
+      throw redirect({ to: "/" });
+    }
+  },
   head: () => ({
     meta: [
       { title: "Projects — Keira Patel" },
