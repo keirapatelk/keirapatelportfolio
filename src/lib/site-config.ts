@@ -5,6 +5,6 @@
  */
 export const pageVisibility = {
   home: true,
-  projects: false,
+  projects: true,
   contact: true,
 } as const;

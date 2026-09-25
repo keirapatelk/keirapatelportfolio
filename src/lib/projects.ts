@@ -373,6 +373,7 @@ details: [
     ],
   },
   {
+    visible: false,
     slug: "mammoten-website",
     title: "MammoTEN Vibecoded Website",
     kicker: "A vibecoded marketing site built fast and loose.",
@@ -492,6 +493,7 @@ details: [
     ],
   },
   {
+    visible: false,
     slug: "wheelchair-restraint",
     title: "CAD Wheelchair Restraint System",
     kicker: "A safer, faster restraint mechanism.",
@@ -581,6 +583,7 @@ details: [
     ],
   },
   {
+    visible: false,
     slug: "ieee-website-vibecoded",
     title: "IEEE Website Vibecoded",
     kicker: "A club website built with vibe and velocity.",
